@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  <script>
+    function onButtonPress(){
+      var num = parseInt(document.getElementById('input').value);
+      var x = 0;
+      for (; num > 0; num--) {
+        x += num;
+      }
+      document.getElementById("emptyDiv").innerHTML = x;
+    }
+    function calculate() {
+      var one = parseInt(document.getElementById("num1").value);
+      var two = parseInt(document.getElementById("num2").value);
+      var answer = one + two;
+
+      document.getElementById("addingMach").innerHTML = answer;
+    }
+
+    const calculator = {
+      add:"+";
+      function add(var x, var y) {
+       document.getElementById("calc").innerHTML = output;
+        output = x + y;
+        return;
+      }
+      function subtract(var x, var y) {
+        var output = document.getElementById("calc").innerHTML;
+        output = x - y;
+        return;
+      }
+      function multiply(var x, var y) {
+        output = x * y;
+        return;
+      }
+      function divide(var x, var y) {
+        output = x / y;
+        return;
+      }
+    };
+
+    function answer() {
+      var one = parseInt(document.getElementById("num1").value);
+      var two = parseInt(document.getElementById("num2").value);
+      var operator = document.getElementById("operator").value;
+      switch(operator) {
+        case "+":
+          calculator.add(one, two);
+        case "-":
+          calculator.subtract(one, two);
+        case "*":
+          calculator.multiply(one, two);
+        case "/":
+          calculator.divide(one, two);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div>
+    <p>Message:<input id="input" type="number"></input></p>
+    <button onclick="onButtonPress()">Click Me!</button>
+    <p>Number 1:<input id="num1" type="number"></input></p>
+    <p>Number 2:<input id="num2" type="number"></input></p>
+    <p>Operator:<input id="operator"></input></p>
+    <button onclick="calculate()">+</button>
+    <button onclick="answer()">Calculate Operations</button>
+  </div>
+  <div id="emptyDiv">
+  </div>
+  <div id="addingMach">
+  </div>
+  <div id="calc">
+  </div>
+</body>
+</html>
