@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Team Activity: Tic Tac Toe</title>
+    <style>
+      table {
+        margin: auto;
+        border: solid black;
+      }
+      td {
+        width: 100px;
+        height: 100px;
+        border: solid black;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="notif">Player one's (X) turn.</h1>
+    <table>
+      <tr>
+        <td ontouchend="mark(this)" id="sq"></td>
+        <td ontouchend="mark(this)" id="sq"></td>
+        <td ontouchend="mark(this)" id="sq"></td>
+      </tr>
+      <tr>
+        <td ontouchend="mark(this)" id="sq"></td>
+        <td ontouchend="mark(this)" id="sq"></td>
+        <td ontouchend="mark(this)" id="sq"></td>
+      </tr>
+      <tr>
+        <td ontouchend="mark(this)" id="sq"></td>
+        <td ontouchend="mark(this)" id="sq"></td>
+        <td ontouchend="mark(this)" id="sq"></td>
+      </tr>
+    </table>
+    <button></button>
+  </body>
+  <script>
+    let currentPlayer = "first";
+    let header = document.getElementById("notif");
+
+    let link = document.querySelectorAll("td");
+    console.log(link);
+    for (var i = 0; i < 9; i++) {
+      link[i].addEventListener("touchend", function(){
+        mark(this)}, {once: true} );
+    }
+
+    function mark(cell) {
+      console.log("Touched!")
+      if (currentPlayer == "first") {
+        cell.innerHTML = "X";
+        currentPlayer = "second";
+        header.innerHTML = "Player two's (O) turn."
+      } else {
+        cell.innerHTML ="O";
+        currentPlayer = "first";
+        header.innerHTML = "Player one's (X) turn."
+      }
+    }
+  </script>
+</html>
