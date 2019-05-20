@@ -1,0 +1,27 @@
+Copied from OneNote
+
+EJS: Chapter 5
+
+Friday, May 17, 2019
+14:54
+
+	- Complex Prog = More bugs
+	- OOP allows functions to be placed into english terms
+	- Abstraction: Hide details and talk about functions at a "higher" (more simple) level.
+	- Useful skill: Know when you're working at low level abstraction.
+	- Higher order functions: functions that operate on other functions.
+	- Abstract over actions and not just value
+		○ Functions that return functions
+		○ Functions that change other functions
+		○ Functions that provide new control flow.
+	- Using unicode as an example of abstraction…
+		○ Unicode contains ranges of foreign language scripts (cyrillic, arabic, etc)
+		○ Filter arrays can be used to remove unicode characters no longer in use (see book example).
+	- Pure functions never modify passed values but return new ones.
+	- Map method "maps" one array to a new form. Like a copy constructor that creates a modified copy?
+	- Reduce()  values argument and returns a single value summary.
+		○ Is this particularly useful for summing word count or other array lengths?
+	- Han unification treats all JP, CN, KOR Han characters as the same set. (makes some people angry
+	- UTF-16 is a bad idea in hindsight. If your language uses more than two-unit characters (like vague CN characters)
+		○ JS operations length of strings only deals with code units. (emojis can cause errors to be thrown when attempting to access chars within index.
+charCodeAt and codePointAt returns the full unicode character.

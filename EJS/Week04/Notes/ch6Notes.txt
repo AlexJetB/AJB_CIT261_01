@@ -1,0 +1,63 @@
+Copied from OneNote
+
+EJS: Chapter 6
+
+Friday, May 17, 2019
+15:48
+
+	- No one really agrees on the definition of OOP… hence why we get stackoverflow threads like this: https://stackoverflow.com/questions/107464/is-javascript-object-oriented
+	- Characteristics of OOP:
+		○ Encapsulation
+			§ Dive programs into smaller pieces that manage their own state…
+			§ That piece's knowledge is kept local.
+			§ Interfaces are used to allow pieces to interact with each other.
+			§ Objects are such pieces.
+			§ Encapsulation would involve internal variables (link ints, arrays, etc) to be private, but have public modifiers/mutators (commonly getters and setters)
+			§ Underscore '_' characters are put at the start of a property name to indicate they are private in JS. JS does not yet have "private" or "public" keywords.
+			§ Separating interface from implementation is a good idea.
+		○ Methods
+			§ Mutators like getters and setters of C++ and Java are types of methods
+			§ Typically modify or access the internal values of a function.
+			§ Arrow functions are different.
+		○ Prototypes
+			§ Think in terms of the default constructor in C++ and Java. Not the same but close in terms of their use of default values for initialization.
+			§ Default values as a fallback for empty inputs.
+			§ In the hierarchy of JS, prototypes fall back until all the properties are filled with a value from the respective prototypes.
+			§ Can JS objects/classes have multiple children objects/classes?
+		○ Classes
+			§ Defines shape type of object, or what methods and properties/variables it has.
+			§ Constructor function derives from the proper prototype. (see example for future reference)
+				□ Make sure it has the proper instances of an class created.
+			§ Are prototypes just constructors?
+				□ JavaScript classes are functions with a prototype function… hmmmm….
+		○ Class Notation
+			§ Since 2015 you can use the class keyword and more universal notation.
+		○ Overriding Derived Proeprties
+			§ A property is overridden when given a new value.
+		○ Maps
+			§ In this case the key-value type of container rather than the transformer.
+			§ Declared with "new Map()"
+				□ JS by default comes with a class called map.
+		○ POLYMORPHISM
+			§ When code is written to work with multiple objects containing the necessary interface.
+		○ Symbols
+			§ Unique and cannot be created twice.
+			§ Created through Symbol() function.
+			§ Define interfaces to live alongside other properties regardless of their names
+				□ Meaning values could visually be the same but not equivalent to each other?
+		○ Iterator
+			§ Interface that "iterates" through specified variables.
+			§ Done property indicates termination (iteration finished)
+			§ Typically done with like objects and with container classes…. For example, you wouldn’t start with an integer and have your next object in the iteration be an array. That's bad design.
+			§ Example given a Matrix class with iteration that iterates through matrix row by row, left to right.
+		○ Getters, Setters, and Statics
+			§ Getters retrieve values, setters modify values.
+			§ Methods that have static written are stored within the constructor.
+		○ Inheritance
+			§ When a "child" class inherits properties from a specified "parent" class.
+			§ Keyword used in JS is "extends"
+			§ Inheritance ties classes together, creating more "tangle"
+			§ You should probably not go looking for places to use inheritance.
+				□ It's useful but can create issues down the road if used too often.
+		○ Instanceof operator.
+			§ Binary operator to determine if object was derived from a specific class.
