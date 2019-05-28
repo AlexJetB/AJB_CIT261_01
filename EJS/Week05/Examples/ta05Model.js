@@ -1,3 +1,5 @@
+import
+
 export default class hikeModel{
   constructor (key) {
     this.key = key;

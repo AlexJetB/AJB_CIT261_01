@@ -1,4 +1,4 @@
-import hikeController from './ta05Model.js'
+import hikeController from './ta05Controller.js'
 
 function renderHikeLight(hike) {
   const item = document.createElement('li');
