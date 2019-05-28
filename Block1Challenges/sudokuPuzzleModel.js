@@ -1,4 +1,19 @@
-class sudoPuzzleModel {
+import sudoPuzzleController from './sudokuPuzzleController.js';
+
+export default class sudoPuzzleModel {
+  constructor(fileName) {
+    const sudoPuzzle = [
+      [2, 0, 4, 1, 0, 0, 0, 0, 0],
+      [0, 0, 0, 5, 0, 3, 6, 0, 7],
+      [0, 0, 0, 9, 0, 0, 4, 0, 0],
+      [9, 0, 0, 4, 0, 0, 0, 1, 0],
+      [6, 5, 0, 0, 1, 0, 0, 7, 4],
+      [0, 2, 0, 0, 0, 8, 0, 0, 9],
+      [0, 0, 9, 0, 0, 5, 0, 0, 0],
+      [5, 0, 2, 3, 0, 1, 0, 0, 0],
+      [0, 0, 0, 0, 0, 4, 1, 0, 2]
+    ];
+  }
   //change Value in the accessed column
   changeValue(row, col, newNum) {
     sudoPuzzle[row][col] = newNum;
@@ -48,7 +63,7 @@ class sudoPuzzleModel {
   }
 }
 
-const sudoPuzzle = [
+/*const sudoPuzzle = [
   [2, 0, 4, 1, 0, 0, 0, 0, 0],
   [0, 0, 0, 5, 0, 3, 6, 0, 7],
   [0, 0, 0, 9, 0, 0, 4, 0, 0],
@@ -75,14 +90,34 @@ const sudoPuzzle2 = [
 console.log(sudoPuzzle[1][3]);
 
 const sudoPuzzleTest = new sudoPuzzleModel;
-console.log(sudoPuzzleTest.checkValue(1, 1, 8, sudoPuzzle)); // Unkown value
-console.log(sudoPuzzleTest.checkValue(1, 1, 6, sudoPuzzle)); // Known values...
+console.log(sudoPuzzleTest.checkValue(1, 1, 1, sudoPuzzle)); // Unkown value 1
+console.log(sudoPuzzleTest.checkValue(1, 1, 4, sudoPuzzle)); // Unkown value 4
+console.log(sudoPuzzleTest.checkValue(1, 1, 8, sudoPuzzle)); // Unkown value 8
+console.log(sudoPuzzleTest.checkValue(1, 1, 9, sudoPuzzle)); // Unkown value 9
+console.log(sudoPuzzleTest.checkValue(1, 1, 2, sudoPuzzle)); // Known values...
+console.log(sudoPuzzleTest.checkValue(1, 1, 3, sudoPuzzle));
 console.log(sudoPuzzleTest.checkValue(1, 1, 5, sudoPuzzle));
-console.log(sudoPuzzleTest.checkValue(1, 1, 2, sudoPuzzle));
+console.log(sudoPuzzleTest.checkValue(1, 1, 6, sudoPuzzle));
+console.log(sudoPuzzleTest.checkValue(1, 1, 7, sudoPuzzle));
 
-function readSP(key) {
-  return JSON.parse(window.localStorage.getItem(key));
+function readPuzzle(fileName) {
+  var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", fileName, true);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                return allText;
+            }
+        }
+    }
+    rawFile.send(null);
 }
-function writeSP(key, hikes) {
+// Probably not needed
+function saveFile(fileName, ) {
   window.localStorage.setItem(key, JSON.stringify(hikes));
 }
+*/
