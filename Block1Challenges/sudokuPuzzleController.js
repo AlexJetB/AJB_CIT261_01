@@ -6,4 +6,16 @@ export default class sudoPuzzleController {
     this.sudoPuzzleModel = new sudoPuzzleModel();
     this.sudoPuzzleView = new sudoPuzzleView();
   }
+
+  getTable() {
+    return this.sudoPuzzleModel.sudoPuzzle;
+  }
+
+  sendTable() {
+    this.sudoPuzzleView.createTable(this.getTable());
+  }
 }
+
+var controller = new sudoPuzzleController();
+console.log(controller.getTable());
+controller.sendTable();

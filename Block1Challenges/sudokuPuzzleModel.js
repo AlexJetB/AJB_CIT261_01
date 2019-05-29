@@ -1,8 +1,8 @@
 import sudoPuzzleController from './sudokuPuzzleController.js';
 
 export default class sudoPuzzleModel {
-  constructor(fileName) {
-    const sudoPuzzle = [
+  constructor() {
+    this.sudoPuzzle = [
       [2, 0, 4, 1, 0, 0, 0, 0, 0],
       [0, 0, 0, 5, 0, 3, 6, 0, 7],
       [0, 0, 0, 9, 0, 0, 4, 0, 0],

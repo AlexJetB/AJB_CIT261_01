@@ -3,33 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Let's Play Sudoku!</title>
-    <style>
-    table {
-      margin: auto;
-      border: solid black;
-    }
-    td.sudoSq {
-      width: 30px;
-      height: 30px;
-      border: solid black;
-    }
-    td.sudoSq > input {
-      width: inherit;
-      height: inherit;
-      text-align: center;
-    }
-    h1 {
-      text-align: center;
-    }
-    </style>
+    <link href="sudokuStyle.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-      <table>
-        <tr>
-          <td class="sudoSq"><input type="number" name="" value="" id="sudoA1"></td>
-          <td class="sudoSq"></td>
-        </tr>
+    <form>
+      <table id="tableSpace">
       </table>
+    </form>
   </body>
   <script src="sudokuPuzzleController.js" charset="utf-8" type="module"></script>
 </html>
