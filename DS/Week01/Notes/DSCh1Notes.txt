@@ -1,0 +1,61 @@
+"Doing Stuff" Notes Ch. 1
+
+Wednesday, April 24, 2019
+09:52
+
+NOTE: All page references are to the page of the PDF, not to the numbered pages
+themselves.
+
+P.3
+	- Much of the information in the book can be found via dictionary, google,
+  wikipedia, etc. It is a compiled reference.
+P.5-6
+	- Sublime text editor and Google/Safari used for book examples.
+	- Git is important. Learn it.
+	- C-compiler… needed
+P.7-8
+	- Historic approach to creating things - Cyclic
+	- Cyclic - Make an initial attempt at creation, and then go back and revise
+  one or more decisions made.
+		○ An evolving design.
+	- Steps of Cyclic Approach:
+		1. Think - Essentially brainstorming the product's uses and functions
+    relative to audience. Play within the sandbox.
+		2. Design - "Decide how the thing should behave, look, and interact with
+    other things." In context of software, what other software will your product
+    interact with? E.g. What OS will it be installed on? Will it extend or
+    analyze current OS features?
+		3. Test - What standards should the product meet? Unit and interface tests
+    are good examples of this in software development.
+		4. Create - Begin building your product. Compile the code.
+			i. During this time, you will find and correct weaknesses in your design
+      using steps 1-3.
+	- Most programmers instead start off with creation, rather than thinking,
+  designing, and testing. This often times slows down the creative process,
+  frustrates the programmer and eventually the customer. The "Oh crap!" approach
+  is the nickname for this, because the dev is typically saying "oh crap!" when
+  their creation doesn't work.
+	- The Think, Design, Test, Create method actually takes a short amount of time
+  than the "oh crap!" approach.
+(Section 4)
+P.11-15
+	- HTML, CSS, and JS are the big 3 things used to create modern web pages.
+		○ HTML is the markup language used to organize info for display.
+		○ CSS is the scripting language used to change design.
+		○ JS (JavaScript) is the scripting language used to modify the page or
+    implement apps.
+	- All HTML pages have a <head></head> and <body></body>
+	- Basic explanation of html page here… nothing new for me.
+		○ <!doctype html> == Type of document is HTML5
+		○ <html></html> == specifies html content.
+		○ <title></title> == page title, usually displayed by browser tab.
+		○ <head></head> == Typically contains the meta info, JS(script) and
+    CSS(style) tags/links.
+	- Nested tags are tags existing within tags.
+		○ E.g.
+			§ <body>
+				<p>
+					The 'p' tag is nested within body.
+				</p>
+			</body>
+<p> is the paragraph tag… most tags are shorthand.

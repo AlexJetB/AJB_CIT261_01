@@ -1,0 +1,35 @@
+"Doing Stuff" Notes Ch. 2
+
+Wednesday, April 24, 2019
+10:28
+
+NOTE: All page references are to the page of the PDF, not to the numbered pages
+themselves.
+
+P.16
+	- WebPages are often written with many parts premade for you (the browser)
+  while you will assemble from those premade parts (applets, pages). Such is
+  programming. Few start from the ground up.
+P.17
+	- When you write a page in javascript, you are "creating a bunch of
+  operations" for the user.
+	- Computer is medium of communication between developer and user.
+P.18
+	- JavaScript functions have the same structure:
+		1. A name
+		2. Inputs.
+		3. Outputs.
+		4. Operations (modifies/verifies inputs to become outputs).
+	- A good exercise: Examine "functions" in your daily life as an analogy.
+		○ I eat food everyday to produce energy for my daily functions which in turn
+    becomes waste.
+		○ I read textbooks in order to process knowledge and output work.
+		○ I read scriptures to process spiritual knowledge and find purpose/meaning.
+P.19-25
+	- Exercise for a basic "ugly" JavaScript function is here… Nothing new for me,
+  but quick summary:
+		○ Use of DOM (AKA, Document Object Model)
+		○ innerHTML property (modifies the html within document element).
+P.26-27
+	- CSS makes the appearance of applications look "nicer".
+  - CSS is located within the style tag, or indiv file with <link> tag.
