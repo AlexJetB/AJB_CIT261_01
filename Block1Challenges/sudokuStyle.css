@@ -1,0 +1,25 @@
+table {
+  margin: auto;
+  border: solid black;
+}
+.sudoSq {
+  width: 30px;
+  height: 30px;
+  border: solid black;
+}
+.sudoSq > input {
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  font-weight: bold;
+}
+h1 {
+  text-align: center;
+}
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
