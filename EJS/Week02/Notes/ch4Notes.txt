@@ -1,0 +1,51 @@
+EJS: Chapter 4
+
+Tuesday, April 30, 2019
+12:15
+
+	- Objects allow us to group values (bools, ints, strings) into more complex structures.
+Data Sets:
+	- Arrays are a helpful data structure that allow access of value by a known index (first, second, third value, etc)
+	- First index of an array is 0 (duh)
+Properties:
+	- All values contain properties which can be accessed by keywords, such as length.
+	- Null and undefined have no properties.
+	- Length for an array tells how many elements it has.
+	- Can be used for looping termination condition.
+Methods:
+	- All values also contain methods…
+	- Basically, default functions with JavaScript that mutate the value in some way.
+	- Ex. toUpperCase() makes all characters in a string upper case.
+	- Ex. Push(value) places a value at the end of an array. Pop() removes item at end.
+Objects:
+	- One way to create an object is to use braces as an expression.
+	- Properties basically look like a key value pair of a map.
+	- Object.keys returns properties of an object.
+Mutability:
+	- Int, bool and string values are "immutable", meaning it "is impossible to change values of those types". You can combine or create new values from them, but not change existing text.
+	- Objects can have their proprerties changed, meaning they are mutable.
+	- No "deep" comparison operator built into JavaScript. No true overloading of operators either.
+Computing Correlation:
+	- Includes "checks whether a given value exists in the array".
+	- tableFor "figures out which box in the table each journal entry falls into".
+	- Correla
+Array Loops:
+	- Common for loop that goes through the entire length and terminates by length is very common.
+		○ In many cases can be written as 'for (let entry of journal)' where entry serves as the individual item being looked at.
+Further Arrayology:
+	- Shift and unshift are used to move items at the start of an array rather than the end.
+	- IndexOf() finds first occurrence of desired value.
+	- lastIndexOf() finds last occurrence of desired value.
+Strings and Their Properties:
+	- You cannot add a new property to strings, ints or bools.
+	- Strings have many methods in JS to be manipulatd with, such as trim(), join(), split(), etc.
+Rest Parameters:
+	- '…' indicates all previous values are ignored. It spreads out an array when called.
+The Math Object:
+	- Math is a default JS object often used to perform calculations. It contains methods such as max() and min(), as well as properties such as pi
+Destructuring:
+	- You can use square brackets to look inside of a binded value an its contents.
+	- If attempted with a null or undefined, you get an error.
+JSON:
+	- Data structure typically used to communicate information.
+	- Parse() and stringify() functions available in JS.

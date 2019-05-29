@@ -1,0 +1,64 @@
+EJS: Chapter 3
+
+Monday, April 29, 2019
+15:05
+
+Some from chapter 2…
+	- The Environment: collection of bindings that exist at any given time.
+	- Bindings are always present when the program starts. They are part of the
+  language standard.
+
+Functions:
+	- "Bread and butter of JS programming".
+	- Functions allow for structure, and less repetition. More compact code.
+	- Helps classify different combinations of code..
+Defining a Function:
+	- Declared when expression starts with "function".
+	- Parameters are variables passed through parentheses next to function.
+		○ Ex: function myFunction (myParam)
+	- Functions could be void (only manipulate references or DOM, no return.)
+  Return undefined
+	- Bindings have a scope within their function. Bindings outside of scope are
+  considered global, inside function scope are local.
+	- Let and const variables are local to the block they are declared in.
+	- Var functions are visible throughout the program no matter where they are
+  declared.
+	- Scopes can "look out", and access variables "above" their scope.
+Nested Scope:
+	- Basically, functions within functions have what is called a "nested scope"
+Functions as Values:
+	- Functions can be stored as values, and manipulated as such too.
+Declaration Notation:
+	- Function is the keyword used to declare functions in JS.
+	- Functions do not follow any sort of linear flow they are compiled with
+  default values and then accessed at run time. C++ prototyping/ordering is not needed.
+Arrow Functions:
+	- Functions can be defined using a variable = to param, arrow, and then
+  function body.
+	- Ex in book: const square1 (x) => {return x*x)
+	- Single expressions do not require brackets.
+The Call Stack:
+	- The place where the computer stores the call context, or where it called
+  the information from.
+	- If computer has no more memory for the stack, it will state "out of stack
+  space" or "to much recursion". Similar to a stack overflow.
+Optional Arguments:
+	- JS will ignore extra arguments passed, or pass the default value (typically
+  undefined) if given less.
+	- Allows for
+	- Issue: JS will not tell you if you passed too few or too many arguments.
+Closure:
+	- The ability too access the instance of a specific local binding.
+Recursion:
+	- Function calls itself.
+	- MUST have an end point/condition (base) at all times to prevent overflow
+  from "endless" calls.
+	- I like to think of it as a sort of telescope that slides out with each call,
+  and then slides in with each return.
+Growing functions:
+	- If a certain selection of code is consistently used with little to no
+  changes, make a function out of it!
+	- Names should be obvious, and be understandable with other programmers.
+Functions and Side Effects:
+	- Side effect as in action.
+Pure functions in JS have no return values.
