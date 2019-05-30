@@ -1,0 +1,81 @@
+Copied from OneNote
+
+EJS: Chapter 15 Notes
+
+Wednesday, May 29, 2019
+15:19
+
+Event Handles:
+	- Event Handlers notify the computer when a particular user action occurs,
+  such as click, touch, keyup, etc.
+	- Browsers allow functions to be registered to handlers within JS.
+Events and DOM Nodes:
+	- addEventListener() method adds an event to a specified DOM element/node
+	- addEventListener() allows JS to add multiple handlers to one element/node
+  safely…
+	- removeEventListener() removes the event handler.
+		○ Similar params to addEvent.
+Event Objects:
+	- Often contain properties which are information about the event. For example,
+  what button was pressed to incur the event.
+	- "Information stored differs per type of event".
+Propagation:
+	- The event "lowest" in the DOM goes first.
+Default Actions:
+	- Never preventDefault unless you have a good reason.
+	- Some browsers don't even allow events to be "intercepted".
+Key Events:
+	- Key down is when a key is pressed, keyup is when a key is released.
+	- This event has all of the different key options as properties.
+		○ This can be used to create events based off of key combinations.
+	- Most elements can't have focus unless given tabindex attribute.
+	- Links, buttons and form fields have focus.
+Pointer Events:
+	- Mouse Clicks:
+		○ Mouseup mousedown same as key up key down for mouse button press.
+		○ Click is another event along with dblclick.
+		○ Clientx and clienty properties contain the pixels of where the event
+    happened, relative to the top left corner of the window.
+			§ Pagex and pagey give it relative to the top left corner of the whole
+      document.
+	- Mouse Motion:
+		○ Mousemove event.
+			§ Registered to whole window.
+		○ Buttons property indicates the buttons held down. Is zero when no buttons
+    are held down.
+Touch Events:
+	- Same as pointer events but relative to touch screen devices (smart phones,
+  tablets)
+		○ Touchstart, touchmove, touchend.
+		○ Often want to call preventDefault to override browser's default behavior.
+Scroll Events:
+	- Used whenever an element is scrolled.
+	- Giving element position of fixed creates a somewhat absolute position and
+  prevents element from scrolling along with the document.
+	- Prevent default does not prevent the scrolling from happening.
+Focus Events:
+	- When an element gains focus, i.e. when the user selects and input to edit or
+  a clicks on a link.
+	- These events do not propagate.
+	- Blur: when the user moves from or to the browser tab or window where the
+  document in question is.
+Load Event:
+	- Fired after the body of the doc loads.
+	- Script tags are compiled when encountered in the document building process.
+	- Loading evvents do no propagate.
+Events and the Event Loop:
+	- Event workers allow us to "thread" background work so the browser is not
+  being over encumbered with processes.
+Timers:
+	- setTimeout schedules another function to be called after a given number of
+  milliseconds.
+	- clearTimeout removes the timer (before its completion) given a certain
+  action is made.
+	- cancelAnimation frame works similarly but with frames.
+	- setInterval and clearInterval set the interval or how many milliseconds the
+  timer should repeat.
+Debouncing:
+	- Make sure no code heavy functions bound to events are called frequently
+  causing the browser to slow. 
+	- setTimeout can be used to prevent this. This is called deBouncing.
+AN undefined value to clearTimeOut as no effect. Call it in the correct place.
