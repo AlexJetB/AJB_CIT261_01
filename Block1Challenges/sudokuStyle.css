@@ -2,6 +2,16 @@ table {
   margin: auto;
   border: solid black;
 }
+
+#actions {
+  text-align: center;
+  margin: auto;
+}
+
+#dialogue {
+  width: 388px;
+  margin: auto;
+}
 .sudoSq {
   width: 30px;
   height: 30px;
@@ -12,7 +22,21 @@ table {
   height: inherit;
   text-align: center;
   font-weight: bold;
+  background-color:
 }
+
+.sudoSq > input:focus {
+  background-color: #add8e6;
+}
+
+.sudoSq > input.correct {
+  background-color: #90EE90;
+}
+
+.sudoSq > input.wrong {
+  background-color: #FA8072;
+}
+
 h1 {
   text-align: center;
 }

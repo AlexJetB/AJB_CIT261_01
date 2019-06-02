@@ -19,9 +19,9 @@ export default class sudoPuzzleView {
         tableElements += this.tdElS + i + j + '"><input type="number" name="'
         + i + j + '" id="sudo' + i + j + '" value="';
         if (value === 0) {
-          tableElements +='">\n';
+          tableElements +='" class="na">\n';
         } else {
-          tableElements += value + '" readonly>\n';
+          tableElements += value + '"class="correct square" readonly>\n';
         }
         tableElements += this.tdElE;
       }
@@ -29,8 +29,8 @@ export default class sudoPuzzleView {
     }
     tableHTML.innerHTML += tableElements;
   }
-
-  updateTable() {
-
+  // Perhaps not needed
+  updateTable(sudoTable) {
+    this.createTable(sudoTable);
   }
 }

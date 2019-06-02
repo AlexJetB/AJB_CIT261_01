@@ -2,24 +2,67 @@ import sudoPuzzleController from './sudokuPuzzleController.js';
 
 export default class sudoPuzzleModel {
   constructor() {
-    this.sudoPuzzle = [
-      [2, 0, 4, 1, 0, 0, 0, 0, 0],
-      [0, 0, 0, 5, 0, 3, 6, 0, 7],
-      [0, 0, 0, 9, 0, 0, 4, 0, 0],
-      [9, 0, 0, 4, 0, 0, 0, 1, 0],
-      [6, 5, 0, 0, 1, 0, 0, 7, 4],
-      [0, 2, 0, 0, 0, 8, 0, 0, 9],
-      [0, 0, 9, 0, 0, 5, 0, 0, 0],
-      [5, 0, 2, 3, 0, 1, 0, 0, 0],
-      [0, 0, 0, 0, 0, 4, 1, 0, 2]
+    // For now we're hardcoding the puzzles
+    // this.sudoPuzzle = [ // Easy random puzzle
+    //   [2, 0, 4, 1, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 5, 0, 3, 6, 0, 7],
+    //   [0, 0, 0, 9, 0, 0, 4, 0, 0],
+    //   [9, 0, 0, 4, 0, 0, 0, 1, 0],
+    //   [6, 5, 0, 0, 1, 0, 0, 7, 4],
+    //   [0, 2, 0, 0, 0, 8, 0, 0, 9],
+    //   [0, 0, 9, 0, 0, 5, 0, 0, 0],
+    //   [5, 0, 2, 3, 0, 1, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 4, 1, 0, 2]
+    // ];
+    this.sudoPuzzle = [ // Hard random puzzle
+      [0, 0, 0, 2, 0, 0, 3, 5, 6],
+      [5, 0, 4, 0, 8, 0, 0, 0, 0],
+      [7, 0, 0, 0, 0, 0, 0, 1, 0],
+      [0, 3, 0, 0, 0, 6, 4, 7, 0],
+      [2, 0, 0, 0, 0, 0, 0, 0, 3],
+      [0, 4, 1, 7, 0, 0, 0, 2, 0],
+      [0, 5, 0, 0, 0, 0, 0, 0, 9],
+      [0, 0, 0, 0, 4, 0, 1, 0, 7],
+      [1, 7, 2, 0, 0, 9, 0, 0, 0]
     ];
+    /* Solved puzzle will always start as a copy of sudoPuzzle.
+       The Model class will solve it onLoad.*/
+    // this.solvedPuzzle = [ easy random solution
+    //   [2, 0, 4, 1, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 5, 0, 3, 6, 0, 7],
+    //   [0, 0, 0, 9, 0, 0, 4, 0, 0],
+    //   [9, 0, 0, 4, 0, 0, 0, 1, 0],
+    //   [6, 5, 0, 0, 1, 0, 0, 7, 4],
+    //   [0, 2, 0, 0, 0, 8, 0, 0, 9],
+    //   [0, 0, 9, 0, 0, 5, 0, 0, 0],
+    //   [5, 0, 2, 3, 0, 1, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 4, 1, 0, 2]
+    // ];
+    this.solvedPuzzle = [ // hard random solution
+      [0, 0, 0, 2, 0, 0, 3, 5, 6],
+      [5, 0, 4, 0, 8, 0, 0, 0, 0],
+      [7, 0, 0, 0, 0, 0, 0, 1, 0],
+      [0, 3, 0, 0, 0, 6, 4, 7, 0],
+      [2, 0, 0, 0, 0, 0, 0, 0, 3],
+      [0, 4, 1, 7, 0, 0, 0, 2, 0],
+      [0, 5, 0, 0, 0, 0, 0, 0, 9],
+      [0, 0, 0, 0, 4, 0, 1, 0, 7],
+      [1, 7, 2, 0, 0, 9, 0, 0, 0]
+    ];
+    this.rowS;
+    this.colS;
   }
   //change Value in the accessed column
   changeValue(row, col, newNum) {
-    sudoPuzzle[row][col] = newNum;
+    if (newNum <=9 && newNum >= 0) {
+      this.sudoPuzzle[row][col] = newNum;
+      return true;
+    } else {
+      return false;
+    }
   }
   // make sure entered value != same value in its row, col, or box
-  checkValue(row, col, curNum, puzzle) {
+  checkValue(curNum, row, col) {
     var r = row; // Row
     var c = col; // Column
     var i; // Iterator
@@ -28,7 +71,7 @@ export default class sudoPuzzleModel {
     for (i = 0; i < 9; i++) {
       if (i === col) {
         continue;
-      } else if (sudoPuzzle[r][i] === curNum) {
+      } else if (this.sudoPuzzle[r][i] === curNum) {
         return false;
       } else {
         continue;
@@ -38,7 +81,7 @@ export default class sudoPuzzleModel {
     for (i = 0; i < 9; i++) {
       if (i === row) {
         continue;
-      } else if (sudoPuzzle[i][c] === curNum) {
+      } else if (this.sudoPuzzle[i][c] === curNum) {
         return false;
       } else {
         continue;
@@ -50,7 +93,7 @@ export default class sudoPuzzleModel {
         for(j = 0; j < 3; j++) {
           if ((startR + i) === row && (startC + j) === col) {
             continue;
-          } else if (sudoPuzzle[startR + i][startC + j]) {
+          } else if (this.sudoPuzzle[startR + i][startC + j]) {
             return false;
           } else {
             continue
@@ -58,37 +101,90 @@ export default class sudoPuzzleModel {
         }
       }
     }
-
     return true;
+  }
+
+  solver() {
+    if(!this.findEmpty()) {
+      return true;
+    }
+
+    let num;
+    for(num = 1; num <= 9; num++) {
+      var possibleArray = new Array(9);
+
+      this.computeValidity(possibleArray, this.rowS, this.colS);
+
+      if(possibleArray[num]) {
+        this.solvedPuzzle[this.rowS][this.colS] = num;
+
+        if (this.solver()) {
+          return true;
+        }
+        do {
+          this.colS--;
+          if (this.colS < 0) {
+            this.rowS--;
+            this.colS = 8;
+          }
+        }
+        while(this.solvedPuzzle[this.rowS][this.colS] ===
+        this.sudoPuzzle[this.rowS][this.colS]);
+        this.solvedPuzzle[this.rowS][this.colS] = 0;
+      }
+    }
+    return false;
+  }
+
+  findEmpty() {
+    for (this.rowS = 0; this.rowS < 9; this.rowS++) {
+      for (this.colS = 0; this.colS < 9; this.colS++) {
+        if(this.solvedPuzzle[this.rowS][this.colS] == 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  computeValidity(possibleArray, r, c) {
+    //Compile array with true only...
+    let i;
+    for (i = 1; i <= 9; i++) {
+      possibleArray[i] = true;
+    }
+
+    let iRow;
+    let iCol;
+    for (iRow = 0; iRow < 9; iRow++) {
+
+      if(this.solvedPuzzle[iRow][c] != 0) {
+        possibleArray[this.solvedPuzzle[iRow][c]] = false;
+      }
+    }
+
+    for (iCol = 0; iCol < 9; iCol++) {
+      if(this.solvedPuzzle[r][iCol] != 0) {
+        possibleArray[this.solvedPuzzle[r][iCol]] = false;
+      }
+    }
+
+    for (iRow = 0; iRow < 3; iRow++) {
+      for (iCol = 0; iCol < 3; iCol++) {
+        let startR = r - r % 3;
+        let startC = c - c % 3;
+        if (this.solvedPuzzle[startR + iRow][startC + iCol] != 0) {
+          possibleArray[this.solvedPuzzle[startR + iRow][startC + iCol]]
+          = false;
+        }
+      }
+    }
   }
 }
 
-/*const sudoPuzzle = [
-  [2, 0, 4, 1, 0, 0, 0, 0, 0],
-  [0, 0, 0, 5, 0, 3, 6, 0, 7],
-  [0, 0, 0, 9, 0, 0, 4, 0, 0],
-  [9, 0, 0, 4, 0, 0, 0, 1, 0],
-  [6, 5, 0, 0, 1, 0, 0, 7, 4],
-  [0, 2, 0, 0, 0, 8, 0, 0, 9],
-  [0, 0, 9, 0, 0, 5, 0, 0, 0],
-  [5, 0, 2, 3, 0, 1, 0, 0, 0],
-  [0, 0, 0, 0, 0, 4, 1, 0, 2]
-];
 
-const sudoPuzzle2 = [
-  [0, 1, 2, 3, 4, 5, 6, 7, 8], // row0
-  [0, 1, 2, 3, 4, 5, 6, 7, 8], // row1
-  [0, 1, 2, 3, 4, 5, 6, 7, 8], // row2
-  [0, 1, 2, 3, 4, 5, 6, 7, 8], // row3
-  [0, 1, 2, 3, 4, 5, 6, 7, 8], // row4
-  [0, 1, 2, 3, 4, 5, 6, 7, 8], // row5
-  [0, 1, 2, 3, 4, 5, 6, 7, 8], // row6
-  [0, 1, 2, 3, 4, 5, 6, 7, 8], // row7
-  [0, 1, 2, 3, 4, 5, 6, 7, 8], // row8
-];
-
-console.log(sudoPuzzle[1][3]);
-
+/*console.log(sudoPuzzle[1][3]);
+// Debugging
 const sudoPuzzleTest = new sudoPuzzleModel;
 console.log(sudoPuzzleTest.checkValue(1, 1, 1, sudoPuzzle)); // Unkown value 1
 console.log(sudoPuzzleTest.checkValue(1, 1, 4, sudoPuzzle)); // Unkown value 4
