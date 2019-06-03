@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Let's Play Sudoku!</title>
+    <link href="sudokuStyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>Sudoku!</h1>
+    <table id="tableSpace">
+      <tr class="row">
+        <td class="sudoSq">
+          <input type="number" id="00" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="01" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="02" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="03" value=" " class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="04" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="05" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="06" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="07" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="08" value="" class="square">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="sudoSq">
+          <input type="number" id="10" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="11" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="12" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="13" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="14" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="15" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="16" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="17" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="18" value="" class="square">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="sudoSq">
+          <input type="number" id="20" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="21" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="22" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="23" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="24" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="25" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="26" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="27" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="28" value="" class="square">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="sudoSq">
+          <input type="number" id="20" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="21" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="22" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="23" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="24" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="25" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="26" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="27" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="28" value="" class="square">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="sudoSq">
+          <input type="number" id="40" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="41" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="42" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="43" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="44" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="45" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="46" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="47" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="48" value="" class="square">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="sudoSq">
+          <input type="number" id="50" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="51" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="52" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="53" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="54" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="55" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="56" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="57" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="58" value="" class="square">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="sudoSq">
+          <input type="number" id="60" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="61" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="62" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="63" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="64" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="65" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="66" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="67" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="68" value="" class="square">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="sudoSq">
+          <input type="number" id="70" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="71" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="72" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="73" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="74" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="75" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="76" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="77" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="78" value="" class="square">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="sudoSq">
+          <input type="number" id="80" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="81" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="82" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="83" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="84" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="85" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="86" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="87" value="" class="square">
+        </td>
+        <td class="sudoSq">
+          <input type="number" id="88" value="" class="square">
+        </td>
+      </tr>
+    </table>
+    <!-- <div id="actions">
+      <button id="cP" onclick="checkProgress()">Check Progress</button>
+      <button id="sP" onclick="submitPuzzle()">Submit Puzzle</button>
+    </div>
+    <div id="dialogue">
+      Progress: <span id="progress"></span>
+    </div> -->
+  </body>
+  <script src="sudokuPuzzleController.js" charset="utf-8" type="module"></script>
+</html>
