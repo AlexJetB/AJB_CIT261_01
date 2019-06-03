@@ -1,0 +1,86 @@
+EJS: Chapter 10 Notes
+
+Tuesday, May 7, 2019
+11:28
+
+	- DOM = Document Object Model
+		○ Live data structure of the document created by html text.
+		○ Has multiple properties representing the HTML properties (like "head" and
+    "body")
+	- Data structure is tree when it has a branching structure, no cycles (a node
+  cannot contain itself, directly or indirectly), well defined root.
+		○ DOM's "root" is document.documentElement.
+	- DOM was originally designed to be used with other systems as well, like XML.
+		○ The integration is considered poor.
+		○ No way to create new node and add children to it.
+		○ Flaws aren't fatal. JS abstraction ability allows creation of support JS
+    libraries to improve.
+	- DOM Structure:
+		○ Every node has a
+			§ parentNode property.
+			§ childNodes property
+		○ firstChild & lastChild properties point to their respective nodes, or null
+    (for no children).
+			§ See: https://www.w3schools.com/jsref/prop_node_lastchild.asp
+		○ previousSibling & nextSibling point to adjacent nodes that share the same
+    parent.
+			§ For firstChild node, previousSibling will be null.
+			§ For lastChild node, nextSibling will be null.
+		○ children property only contains element children, not other types of child
+    nodes.
+			§ Useful for interest in non-text nodes.
+	- Navigation:
+		○ Starting at "document.body" using a fixed path of properties is a bad idea.
+			§ This is because it "bakes assumptions" into a document we will likely
+      want to change.
+		○ Document.body.getElementsByTagName collects all elements with the given
+    tag name that are descendants
+		○ Document.getElementById and document.getElementbyClassName…. Ditto from
+    last semester.
+	- Changing the document
+		○ Nodes have the remove method to remove that node from the page.
+		○ appendChild puts it a child node at the end of the list of children
+		○ InsertBefore which inserts the node given as the first node of the list.
+		○ A node can exist in only one place, so inserting a node else where will
+    cause it to be removed from its origin, given it exists.
+		○ replaceChild replaces a child node with another existing one.
+		○ Creating nodes:
+			§ Text nodes created with document.createTextNode() method given a string.
+			§ Solid collection of nodes is when it is simply not live.
+				□ Created by converting collection to a real array by calling array.from.
+			§ Live collection of nodes means page is modified, visual updates quickly
+      follow.
+		○  document.createElement creates new element nodes.
+		○ getAttribute() and setAttribute() allow you to modify any one of HTMLs
+    attributes.
+		○ Recommended - Prefix names of made-up attributes with data to ensure they
+    do not conflict with any other attributes.
+	- Layout
+		○ Some elements are called block elements (<p> and <h1>) typically rendered
+    on separate lines, others are called inline (<a> and <strong>) and are
+    rendered on the same line of text
+		○ Size and position of an element can be accessed from JS.
+			§ offsetWidth & offsetHeight gives space the element takes up in pixels.
+			§ clientWidth & clientHeight give size of space inside element.
+		○ Programs that repeatedly alternate between reading DOM layout and changing
+    the DOM will run slowly.
+	- Styling
+		○ Pretty standard stuff from CSS
+		○ JS can directly manipulate the style of an element through the style
+     property.
+	- Cascading Styles
+		○ Style sheets - set of rules for how to style elements in a document.
+		○ Cascading == multiple rules combined in an cascading layers manner to
+    produce a final style for a specific element.
+		○ A rule is all content within a CSS bracket {}
+	- '>' indicates element that is a direct child of another element. For
+  example, p > a indicates all <a> tags inside of <p> tags.
+
+
+Questions:
+	1. If we have well organized IDs and classes for our elements, should we avoid
+  using the tree structure's node properties? (using getElementById(),
+  getElementsByClassName() & getElementsByName())
+	2. Is an array of elements created when using getElementsByClassName retrieves
+  several elements sharing the same class?
+Do we typically use offsetWidth, clientHeight etc for console logging purposes?
