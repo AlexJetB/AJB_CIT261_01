@@ -9,20 +9,21 @@ table {
 }
 
 #dialogue {
-  width: 388px;
+  width: 90%;
   margin: auto;
 }
+
 .sudoSq {
-  width: 30px;
-  height: 30px;
-  border: solid black;
+  width: 5em;
+  height: 5em;
+  border: solid black 0.5em;
 }
-.sudoSq > input {
+.sudoSq > input, h1{
   width: inherit;
   height: inherit;
   text-align: center;
   font-weight: bold;
-  background-color:
+  font-size: 5em;
 }
 
 .sudoSq > input:focus {
