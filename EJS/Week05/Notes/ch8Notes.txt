@@ -1,2 +1,74 @@
-Need to populate this....
-Need to retype notes. OneNote may have lost them.
+EJS: Chapter 8 Notes
+
+Wednesday, May 29, 2019
+15:19
+
+Bugs and Errors
+
+Language:
+	- JavaScript's "looseness" is a barrier to proper detection by a computer.
+	- Incorrect JS syntax is detectible.
+	- Oftentimes bad programming will produce a NaN or undefined value.
+	- Debugging - Process of finding mistakes.
+Strict Mode:
+	- Put "use strict"; at the top of a file or a function body.
+	- Makes java a little stricter.
+	- Will enable error reporting for scope on let rather than create a global
+  variable.
+	- This binding holds the value undefined in functions not called as methods.
+	- Basically, strict mode prevent JavaScript from writing global bindings for
+  everything.
+	- Rarely hurts and may help spot a problem.
+Types:
+	- JavaScript converts value types to what it expects rather than what the user
+  states.
+	- Annotating your types helps understand what you're software should be
+  looking for..
+	- TypeScript is a JS dialect that add types to the language and check them
+  before runtime.
+Testing:
+	- You want to test and verify aspects of your code work correctly before
+  running it.
+	- Test suites contain functions and methods to test your code and verify
+  output as correct or incorrect according to stated desires.
+	- "Generally, the more external objects that the code interacts with, the
+  harder it is to set up the context in which to test it"
+Debugging:
+	- Often involves stepping through the code manually or setting console.log()
+  to see what the variable values are after a given line of code.
+	- Browsers often come equipped with debugging utilities.
+Error Propagation:
+	- A special value could be returned to indicate failure in input or execution.
+		○ Not advised. Two issues:
+			§ You'll have to wrap the result in an object to distinguish success from
+      failure. The object wrapping with isNaN is an example..
+			§ Leads to "awkward code". It has to check each time a special value is
+      returned in the code above.
+Exceptions:
+	- Stop code execution and immediately executes "exception handling".
+	- Such handling raises/throws an exception when an incorrect code execution
+  occurs.
+	- It jumps out from the function hierarchy, in what is known as unwinding the
+  stack.
+		○ So if an exception is called within a function that was called by another
+    function, it will show the location of the first function and then the
+    second within the exception handling.
+Cleaning Up After Exceptions:
+	- Every exception might cause control to leave your code.
+	- Certain values passed may disappear.
+	- Finally block within exception handling states to ALWAYS run the code even
+  when handling an exception.
+Selective Catching:
+	- For expected problems during routine use, crashing with an unhandled
+  exception is a bad strategy.
+	- If you expect an error to happen, thrown an exception for it.
+	- JavaScript doesn't provide direct support for selective exception catching.
+  You catch all or none.
+	- Don't blanket-catch exceptions unless you intend to route them to notify
+  someone or some other program/software about the crash.
+	- Instanceof let's us figure out which exception was caught.
+Assertions:
+	- Check inside a program to verify something is in the correct state.
+	- Find programmer mistakes.
+Recommends against trying to write assertions for every possible kind of bad
+input. Create noisy code and unreasonable amount of work.
