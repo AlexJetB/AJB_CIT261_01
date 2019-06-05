@@ -1,0 +1,79 @@
+EJS: Chapter 11 Notes
+
+Wednesday, June 5, 2019
+14:09
+
+Asynchronous Programming
+
+Asynchronicity:
+	- When multiple steps are performed at the same time, not just one step at a
+  time.
+	- In a synchronous system (eg, a single CPU computer) this can be imitated
+  through threading:
+		○ Execution is interleaved with other programmers, so while steps are being
+    processed one at a time, they are between multiple programs.
+	- Is somewhat awkward when implemented in programs that follow a straight line.
+Callbacks:
+	- Function that performs a slow action returns this upon termination.
+	- Can often be used to check for operation timeouts or updating an animation.
+	- Confirms return of request.
+	- Asynchronicity is contagious, in that a function that calls another function
+  that is asynchronous, is usually asynchronous itself.
+Promises:
+	- Standard class Promise:
+		○ Asynchronous action that may complete at some point and produce a value.
+		○ Easiest way to create is with Promise.resolve.
+		○ Use "then()" method to get the result of a promise.
+			§ Also returns another promise which resolves itself to the value that the
+      handler returns.
+	- Promise is a value that may be there or appear in the future.
+	- Created through promise constructor.
+Failure:
+	- Popular: first argument to callback indicates if action failed, second
+  contains value given action was successful.
+	- Promise contains reject function that creates a new, immediately rejected
+  promise.
+Networks Are Hard:
+	- Sometimes, network transmissions fail by random accident.
+	- Recursion can be used to try action again after an encountered failure.
+	- Send and defineRequestType follow similar convention to first point of
+  failure (in these notes).
+Collections of Promises:
+	- Promise.all function returns a promise that in turn waits for all promises
+  in the array to resolve.
+		○ Useful for large collections of Promises.
+Network Flooding:
+	- Set up a request that is automatically forward to neighbors.
+	- This is done until the whole network has received the message.
+Message Routing:
+	- To prevent useless data transfers, message routing is needed.
+	- We check if the neighbors receiving the message are apart of the current set.
+	- Computer networks often do this on a more complex level to reduce network
+  hops.
+Async Functions:
+	- A "function that implicitly returns a promise that can, in its body, await
+  other promises in a way that looks synchronous".
+	- Marked by async before function keyword. For methods too.
+	- Can be frozen at any point that has an await, and resumed later.
+	- Returns a promise.
+Generators:
+	- Similar to async, but without promises.
+	- Defined by function*.
+	- Returns an iterator.
+	- Returns until it hits a yield expression.
+		○ Pauses and causes yielded value to become next value produced by iterator.
+	- Generators automatically save their local state every time they yield.
+	- Async is a special type of generator.
+The Event Loop:
+	- Asynchronous behavior occurs on its own empty function call stack.
+		○ Makes managing async exceptions difficult without promises.
+		○ Catch handlers won't be on the stack when they thrown an exception.
+	- JavaScript runs one program at a time in what is known as the event loop.
+	- Loop only stops when there is nothing to do.
+	- Slow running code can delay the handling of events.
+Asynchronous Bugs:
+	- Be aware of where gaps in your code occur.
+
+Questions:
+What exactly are promises? The definition given in the book doesn't seem totally
+precise. 
