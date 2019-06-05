@@ -76,4 +76,6 @@ Asynchronous Bugs:
 
 Questions:
 What exactly are promises? The definition given in the book doesn't seem totally
-precise. 
+precise.
+The examples often include external code that I can't find easily. Is there
+anyway I can get around this?
