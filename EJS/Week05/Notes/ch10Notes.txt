@@ -1,0 +1,62 @@
+EJS: Chapter 10 Notes
+
+Wednesday, May 22, 2019
+15:19
+
+Modules:
+	- Specify what other pieces it relies on and which functionality provides for
+  other modules.
+	- Have a lot in common with object interfaces.
+	- They make part of the module available to the outside world and the rest
+  private.
+	- Each module needs its own private scope, like a class in OOP.
+		○ Private scopes are not visible to any other modules.
+Packages:
+	- One advantage to modules is that they can be applied to other programs.
+	- NPM is used to conveniently store and find packages in JS.
+		○ Goes online to download packages.
+		○ Helps install and manage them.
+		○ Basically, it’s a dependency manager like Maven for Java.
+	- Over half a million packages available on NPM, but over half are garbage
+  according to author.
+	- Every useful package can be found there.
+	- Ch. 20 shows NPM package installation on CMD.
+	- Many packages are published under open source licensing.
+		○ Many are viral, and require you publish under the same license if you copy
+    the code from that package.
+Improvised Modules:
+	- No built-in module system until 2015.
+	- Improv modules provided isolation but do no declare dependencies.
+	- Interface is placed in global scope and expects dependencies to do the same.
+	- This improv module system is now obsolete.
+Evaluating Data As Code:
+	- Eval operator takes string and executes it within the current scope of code.
+		○ Bad idea because it could break the typical properties of scopes have.
+	- Use function constructor to avoid breaking the expected scope. Example:
+		let plusOne = Function("n", "return n + 1;");
+		console.log(plusOne(4));
+		// → 5
+CommonJS:
+	- Approach to "bolted-on" JS modules.
+	- Mainly uses function called required.
+		○ When called with name of dependency, it makes sure the module is loaded
+    and returns its interface.
+	- Because the loader wraps module code in a function, modules get their own
+  local scope.
+	- Require keeps a cache of already loaded modules to avoid loading them
+  multiple times.
+	- Define parameters of the wrapper function to assure they are loaded into the
+  module's scope.
+ECMAScript Modules:
+	- AKA "ES modules".
+	- Notation is integrated into the language.
+	- You use the special keyword "import" to access a dependency.
+	- Write "export default" to create the module's main exported value.
+	- Many programs are written using ES modules and converted to another format
+  when published.
+Building and Bundling:
+	- Many developers create compilers that take JS dialects and convert it to
+  regular JS so older browsers can run it.
+Module Design:
+Make sure the package's interface is predictable and easily understandable for
+other users.
