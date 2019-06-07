@@ -53,6 +53,10 @@ export default class sudoPuzzleController {
   update() {
 
   }
+
+  ping() {
+    console.log("Ping!");
+  }
 }
 
 var controller = new sudoPuzzleController();
@@ -60,12 +64,17 @@ controller.getTable();
 console.log(controller.debugSolve());
 controller.sendTable();
 
-var inputs = document.getElementsByClassName('square');
-var i;
-
-for (i = 0; i<inputs.length; i++){
-  var r = inputs[i].id.charAt(0);
-  var c = inputs[i].id.charAt(1);
-  controller.changeValue(r, c);
+function ping() {
+  console.log("ping!");
 }
+
+// var inputs = document.getElementsByClassName('square');
+// var i;
+//
+// for (i = 0; i<inputs.length; i++){
+//   var r = inputs[i].id.charAt(0);
+//   var c = inputs[i].id.charAt(1);
+//   controller.changeValue(r, c);
+// }
+
 // Various stylist functions

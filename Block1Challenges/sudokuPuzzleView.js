@@ -16,12 +16,12 @@ export default class sudoPuzzleView {
       tableElements += this.trElS;
       for (j = 0; j < 9; j++) {
         var value = sudoTable[i][j];
-        tableElements += this.tdElS + i + j + '"><input type="number" name="'
-        + i + j + '" id="sudo' + i + j + '" value="';
+        tableElements += this.tdElS + `${i}${j}"><input type="number" name="`
+        + `${i}${j}" id="sudo' + i + j + '" value="`;
         if (value === 0) {
-          tableElements +='" class="na">\n';
+          tableElements +=`" class="na" onchange="ping()">\n`;
         } else {
-          tableElements += value + '"class="correct square" readonly>\n';
+          tableElements += `${value}" class="correct square" readonly>\n`;
         }
         tableElements += this.tdElE;
       }
