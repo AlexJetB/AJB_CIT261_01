@@ -1,0 +1,92 @@
+EJS: Chapter 18 Notes
+
+Wednesday, June 5, 2019
+14:10
+
+HTTP And Forms
+
+The Protocol:
+	- For url 'eloquentjavascript.net/18_http.html..
+		○ Browser first looks up address associated with ' eloquentjavascript.net'
+		○ Tries to open a TCP connection on port 80.
+			§ TCP =  Transmission Control Protocol
+		○ Server exists and accepts connection, browser sends message.
+		○ Server responds with 200 OK message through connection.
+		○ Browser takes response and sends a get request for '/18_http.html'
+	- GET means get specified resource.
+	- DELETE means delete resource.
+	- PUT means to create or replace.
+	- POST means send info to it.
+	- Pages can refuse requests.
+	- Many sites use HTTP version 2.
+		○ More complicated to be faster than version 1.1
+	- Status code 2 means request succeeded.
+	- 4 means something wrong with client request.
+	- 5 means something wrong with the server.
+	- Headers form a name value pair to specify extra info about request or
+  response.
+	- GET and delete don't send data, but PUT and POST do.
+Browsers and HTTP:
+	- 10 to 200 resources can be within a moderately complex site.
+	- Many pages use forms.
+	- Forms contain method attribute to specify request type and action which
+  specifies desired page upon form submission.
+	- ? Marks the url path and beginning of query, which is a group of name value
+  pairs.
+Fetch:
+	- Interface which JavaScript uses to make HTTP requests.
+	- Returns a promise that resolves to a response object holding info about the
+  server's response.
+	- Always resolves successfully even with server error code responses.
+	- Might be rejected given a network error, or server cannot be found.
+	- If there is no HTTP protocol name in the URL, the request is treated as
+  relative to the current document.
+	- Use text method to get content of the response.
+	- Json method returns it as a parsed JSON object IF it's valid JSON.
+	- 405 == method not allowed, meaning the server is not capable of performing
+  the request.
+	- Browser automatically adds some request headers, but you can add your own to
+  validate information.
+HTTP Sandboxing:
+	- Browsers disallow scripts to make HTTP request to other domains due to
+  obvious security concerns.
+	- Servers can include a header to indicate in the response that it is okay for
+  the request to come from another domain.
+Appreciating HTTP:
+	- Common model is remote procedure call to make communication between client
+  JS and server code.
+	- HTTP is a vehicle for communication.
+Security and HTTPS:
+	- HTTPS is the secure protocol version of HTTP.
+	- Makes requests harder to read and tamper with to protect sensitive data.
+Form Fields:
+	- Forms were designed before JS to allow users to submit an HTTP request.
+	- JS can still modify forms as they are apart of the DOM.
+	- Forms contain a type attribute to specify the type of info being inserted.
+Focus:
+	- "Focus" is active for a form field is selected for editing by the user.
+	- Javascript can use focus and blur methods to manipulate the DOM for user
+  input.
+Disabled Fields:
+	- Greyed out and cannot be edited or used.
+The Form as a Whole:
+	- An input of type "submit" will submit the form as a whole.
+	- Intercepting submit events with JS can cause issues.
+Field Types:
+	- Text Fields:
+		○ Created by area tags or input type text.
+	- Checkboxes and Radio Buttons:
+		○ Usually used for multiple value selection.
+		○ Checkboxes = many from many value selection.
+		○ Radio buttons = single from many value selection.
+	- Select fields:
+		○ Similar to radio buttons, but appearance is determined by the browser
+    rather than developer.
+		○ Can also act as checkboxes given the multiple value.
+	- File Fields:
+		○ Originally designed to allow user to upload files from the user's machine
+    through a form.
+		○ Now provide a way to read files from JS programs.
+		○ Acts as a gatekeeper for files.
+	- Storing Data Client-Side:
+    ○ Use browser's local storage. 

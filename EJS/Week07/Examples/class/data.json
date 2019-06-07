@@ -1,0 +1,14 @@
+[
+  {
+    "name": "spaghetti",
+    "type": "pasta"
+  },
+  {
+    "name": "raspberries",
+    "type": "fruit"
+  },
+  {
+    "name": "french bread",
+    "type": "bread"
+  }
+]
