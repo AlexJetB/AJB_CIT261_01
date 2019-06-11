@@ -37,7 +37,15 @@ function buildButtons(data) {
   const prevButton = document.getElementById('prevButton');
 
   nextButton.addEventListener("click", function(){
-    nukeList()})
+    nukeList();
+    const myList = getJson(data.next);
+    console.log(myList);
+
+    myList.then(data => {
+      buildList(data);
+      buildButtons(data);
+    });
+  })
 }
 
 function nukeList() {
