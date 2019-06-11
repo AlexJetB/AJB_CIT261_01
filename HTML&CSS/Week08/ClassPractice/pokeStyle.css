@@ -1,0 +1,6 @@
+#list {
+  list-style: none;
+  border: 1em solid #ff0000;
+  text-align: center;
+  width: 50%;
+}
