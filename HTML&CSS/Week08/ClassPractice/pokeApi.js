@@ -45,7 +45,7 @@ function buildButtons(data) {
       buildList(data);
       buildButtons(data);
     });
-  })
+  }, {once:true})
 }
 
 function nukeList() {
