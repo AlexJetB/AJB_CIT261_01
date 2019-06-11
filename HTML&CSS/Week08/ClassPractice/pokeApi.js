@@ -46,6 +46,17 @@ function buildButtons(data) {
       buildButtons(data);
     });
   }, {once:true})
+
+  prevButton.addEventListener("click", function(){
+    nukeList();
+    const myList = getJson(data.previous);
+    console.log(myList);
+
+    myList.then(data => {
+      buildList(data);
+      buildButtons(data);
+    });
+  }, {once:true})
 }
 
 function nukeList() {
