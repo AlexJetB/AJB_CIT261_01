@@ -6,11 +6,22 @@
     <link rel="stylesheet" type="text/css" href="pokeStyle.css">
   </head>
   <body>
-    Pokemon
+    <div id="display" class="flexCenterCol">
+      <img id="sprite">
+    </div>
+    <div id="info">
+      <p>Abilities:</p> <div id="abilities">
+      </div>
+      <p>Type:</p> <div id="type">
+      </div>
+    </div>
+    <p>Pokemon:</p>
     <ul id='list'>
     </ul>
-    <button id="prevButton">Prev</button>
-    <button id="nextButton">Next</button>
+    <div class="flexCenter">
+      <button id="prevButton">Prev</button>
+      <button id="nextButton">Next</button>
+    </div>
   </body>
   <script type="text/javascript" src="pokeApi.js">
   </script>

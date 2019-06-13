@@ -28,38 +28,61 @@ myList.then(data => {
 
 function buildList(data) {
   const myListElement = document.getElementById('list');
-  myListElement.innerHTML = data.results.map(item => `<li>${item.name}</li>`)
+  myListElement.innerHTML = data.results.map(item => `<li onClick="showOnePoke('${item.url}')">${item.name}</li>`)
   .join('');
 }
 
 function buildButtons(data) {
-  const nextButton = document.getElementById('nextButton');
-  const prevButton = document.getElementById('prevButton');
+  var nextButton = document.getElementById('nextButton'),
+      nextClone = nextButton.cloneNode(true);
+  var prevButton = document.getElementById('prevButton'),
+      prevClone = prevButton.cloneNode(true);
 
-  nextButton.addEventListener("click", function(){
-    nukeList();
-    const myList = getJson(data.next);
-    console.log(myList);
+  //console.log(getEventListeners(nextButton));
+  nextButton.addEventListener("click", function next(){
+    if (data.next !== null) {
+      //nukeList();
+      prevButton.parentNode.replaceChild(prevClone, prevButton);
+      const myList = getJson(data.next);
+      console.log(myList);
 
-    myList.then(data => {
-      buildList(data);
-      buildButtons(data);
-    });
-  }, {once:true})
+      myList.then(newData => {
+        buildList(newData);
+        buildButtons(newData);
+      });
+    } else {
+      console.log("Cannot proceed to empty next!")
+    }
+  }, {once:true});
 
-  prevButton.addEventListener("click", function(){
-    nukeList();
-    const myList = getJson(data.previous);
-    console.log(myList);
+  prevButton.addEventListener("click", function prev(){
+    if (data.previous !== null) {
+      //nukeList();
+      nextButton.parentNode.replaceChild(nextClone, nextButton);
+      const myList = getJson(data.previous);
+      console.log(myList);
 
-    myList.then(data => {
-      buildList(data);
-      buildButtons(data);
-    });
-  }, {once:true})
+      myList.then(newData => {
+        buildList(newData);
+        buildButtons(newData);
+      });
+
+    } else {
+      console.log("Cannot proceed to empty previous")
+    }
+  }, {once:true});
 }
 
-function nukeList() {
-  const myListElement = document.getElementById('list');
-  myListElement.innerHTML = '';
+function showOnePoke(pokeURL) {
+  const sprite = document.getElementById("sprite");
+  const abilities = document.getElementById("abilities");
+  const type = document.getElementById("type");
+  const pokemon = getJson(pokeURL);
+
+  pokemon.then(iData => {
+    sprite.src = iData.sprites.front_default;
+    abilities.innerHTML = iData.abilities.map(item => `${item.ability.name} | `)
+    .join('');
+    type.innerHTML = iData.types.map(item => `${item.type.name} | `).join('');
+  })
 }

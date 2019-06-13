@@ -1,6 +1,60 @@
-#list {
-  list-style: none;
-  border: 1em solid #ff0000;
-  text-align: center;
-  width: 50%;
+body {
+  font-size: 1em;
+  font-family: impact;
+  background-color: #733380;
+}
+
+p {
+  font-size: 2em;
+}
+
+@media only screen {
+  body {
+    font-size: 1.3em;
+    font-family: impact;
+    background-color: #733380;
+  }
+  #list {
+    font-weight: bold;
+    font-family: courier new;
+    font-size: 1.5rem;
+    background-color: #ffefff;
+    list-style: none;
+    border: 0.9em solid #f7b58c;
+    text-align: left;
+    width: auto;
+    box-shadow: inset 0px 0px 0px 10px #84739c;
+    padding: 1em;
+  }
+  #list > li {
+    box-shadow: #f7b58c;
+  }
+  div.flexCenter {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  div.flexCenter > button {
+    background-color: #101010;
+    border: grey;
+    color: grey;
+    margin: auto;
+    font-size: 3em;
+    box-shadow: 5px 10px 	#303030;
+  }
+  div.flexCenterCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  div.flexCenterCol > img {
+    height: 10em;
+    width: 10em;
+    background-color: #ffefff;
+    border-radius: 1em;
+  }
+
+  div.info {
+
+  }
 }
