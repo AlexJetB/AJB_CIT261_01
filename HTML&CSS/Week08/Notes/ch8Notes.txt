@@ -1,0 +1,93 @@
+Htmlcss2: Chapter 8 Notes
+
+Wednesday, June 12, 2019
+19:31
+
+	- CSS3 allows users to transform (flip, tilt, scale) and transition (move)
+  your images with JavaScript.
+	- Transforms:
+		○ Transform functions allow user to manipulate element's appearance.
+	- Translation:
+		○ Movement of object
+		○ Similar to behavior of "position: relative;"
+		○ Function is translate(x, y);
+		○ Doesn't work on inline elements.
+			§ Fixed by display: inline-block; to element.
+		○ No impact on document flow.
+	- Scaling:
+		○ Scale(x, y) function.
+		○ If only one value is provided, used for both x and y values.
+		○ Scales by a ratio. 1 maintains, 2 doubles, 0.5 halves
+		○ Will scale according to center of object.
+		○ No impact on document flow.
+	- Rotation:
+		○ Rotate() function
+		○ Accepts value of degrees, grads, rads or turns.
+		○ Default origin at center.
+		○ Clockwise
+	- Skew:
+		○ Skew(x, y) function
+		○ X specifies skew on x axis, y on y axis.
+		○ Axis specific versions skewX() skewY()
+	- Changing the Origin of the Transform:
+		○ Use transform-origin:
+	- Support for Internet Explorer 8 and Earlier:
+		○ CSS3 transofmrs unsupported in IE 8
+		○ Mimic using position relative and top and left values…
+		○ You can use filters but they are "ugly and perform poorly"
+	- Transitions:
+		○ Native CSS transitions require less client-side processing.
+		○ Declared along with regular styles on an element.
+		○ -webkit- vend prefix will be needed for older mobile devices (Android 4.3,
+    iOS6.1, etc)
+	- Transition-property:
+		○ Defines CSS properties (color, transform, etc) of the element that should
+    be transitioned, with all being default
+		○ Need to use -webkit- prefix for older browsers
+		○ Comma separated for multiple properties.
+	- Transition-duration Property:
+		○ Sets how long the transition will take. Can be specified in seconds (s) or
+    milliseconds (ms)
+	- The Transition-timing-function property:
+		○ Allows more intricate control of the pace of a transition.
+		○ Key terms like "ease", "linear", "ease-in", "ease-out".
+	- Transition-Delay Property:
+		○ Induces a timed delay before transition begins.
+	- Shorthand property:
+		○ Transition: property, duration, timing-function, delay;
+	- Multiple transitions:
+		○ Properties allow for multiple transitions in one call.
+		○ Respective to place in transition-property
+	- Animations:
+		○ Allow control of each step of an animation via keyframes.
+		○ Related to Adobe Flash (keyframes).
+	- Keyframes:
+		○ Specify with @-webkit-keyframes animationName { }
+		○ Don't quote animation name
+		○ @keyframes animationName { }
+		○ From { } and to { } evaluate from 0% to 100% respectively.
+		○ Element must have animation name to use animation.
+	- Animation Properties:
+		○ Animation-name: animeName; attaches animation by name animeName to element
+    under rule.
+		○ Animation-duration: 300ms; causes the animation to only last 0.3s
+		○ Animation-timing-function: linear;
+		○ Use steps function to specify percentage between keyframes (0-100)
+			§ 100/ step is the increment.
+		○ Animation-iteration-count: infinite; define how many times the animation
+    will play through. Infinite means it will play until the browser or page is
+    closed.
+		○ Animation-direction: modifies which direction the animation will move,
+    from 0 to 100 or 100 to 0.
+		○ Animation-delay: how long browser waits in s or ms to begin animation
+		○ Animation-fill-mode "defines what happens before the first animation
+    iteration begins and after the last animation iteration concludes
+			§ Available values are none, forwards, backwards, or both
+			§ Determines if values continue to apply after animation end.
+		○ Animation-play-state: Determines whether animation is running or paused.
+	- Shorthand animation property
+		○ Shorthand version of all of the above where:
+			§ Animation: name, duration, timing-function, iteration-count, direction,
+      delay
+Be careful with animation name for shorthand so that it doesn't match a defined
+property value like 'forwards'.
