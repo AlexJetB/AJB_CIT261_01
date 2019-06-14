@@ -1,0 +1,53 @@
+Htmlcss2: Chapter 12 Notes
+
+Wednesday, June 12, 2019
+19:31
+
+Canvas, SVG, and Drag and Drop
+	- Canvas:
+		○ HTML's API for drawing via JavaScript
+		○ Can draw shapes, lines, arcs, tet, gradients and patterns.
+		○ Supported on:
+			§ Chrome 4+
+			§ Firefox 2+
+			§ Opera 9.6+
+			§ Safari 3.1+
+			§ iOS 3.2+
+			§ IE 9.0+
+			§ Android 3.0+
+		○ First developed by Apple.
+	- Canvas element created using canvas tag and giving ID and Class.
+	- Context is place in canvas were the drawing is rendered.
+	- Only wide support for 2 dimensions.
+	- Stroke is border of the shape rendered in context. Fill is the inside.
+		○ strokeStyle, fillStyle
+		○ Can be defined in hex and rgb.
+	- Canvas has a coordinate system starting from top left. Similar to Android
+  Canvas.
+	- Anonymous functions are functions without names
+	- Gradient is the increase or decrease in magnitude of a property.
+	- Arcs can be used to drop shapes on a curve according to angle.
+	- Use the beginPath() and closePath() methods to draw a line or arc.
+	- Canvas drawings can be saved with toDataURL method.
+	- Images can also be drawn to Canvas.
+	- Images can be manipulated through the ImageData object retrieved with
+  getImageData from Context.
+	- Videos can be modified with Canvas as well with various effects.
+	- Scalable Vector Graphics (SVG):
+		○ Allows you to describe vector graphics using XML
+		○ Image preserves quality even when shrunken or enlarged.
+		○ Images created with SVG are available via the DOM.
+	- Drag and Drop API:
+		○ Unsupported by Android and iOS
+		○ Used to drag and drop elements from one page to another, or a desktop or
+    fileSystem.
+		○ Set draggable attribute to any HTML element you want to be draggable.
+		○ Add event listener for dragstart (for draggable) dragover (for drop
+    events).
+		○ Draggable is not boolean, so it must always be set to true.
+
+Questions:
+	1. Are there any good cases to use drag and drop attributes for anything
+  other than file submission?
+  2. Is drag and drop used on images by default? A lot of sites seem to allow me
+  to drag and drop images into a new tab.
