@@ -1,0 +1,81 @@
+
+@media only screen and (max-width: 1000px) {
+  body {
+    text-align: center;
+    font-family: 'Helvetica Neue', arial;
+    font-weight: 100;
+    background-color: #87421F;
+    font-size: 1em;
+  }
+
+  h1 {
+    font-weight: 100;
+    font-size: 2em;
+  }
+
+  p {
+    margin: 0;
+    color: white;
+    font-size: 3em;
+  }
+
+  div.eightBall {
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 25em;
+    height: 25em;
+    margin: 0 auto;
+  }
+
+  div.answer {
+    font-size: 1em;
+    background-color: #333;
+    border: 1px solid #333;
+    border-radius: 1em;
+    width: 80%;
+    height: 50%;
+    margin: 10% auto;
+  }
+
+  p#eight {
+    font-size: 6em;
+    margin: 20% auto;
+    color: white;
+  }
+
+  p#answer {
+    font-size: 3em;
+    padding: 25px;
+    color: lightblue;
+    letter-spacing: 2px;
+  }
+
+  button, input {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 3em;
+    font-family: 'Helvetica Neue', arial;
+    font-weight: 100;
+    letter-spacing: 2px;
+    transition: .5s font-size;
+  }
+
+  button:hover {
+    font-size: 3em;
+  }
+
+  input#qInput {
+    width: 75%;
+  }
+
+  #photo {
+    width: 100%;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+  }
+}
