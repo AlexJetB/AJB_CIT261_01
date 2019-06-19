@@ -1,0 +1,86 @@
+EJS: Chapter 17 Notes
+
+Wednesday, June 19, 2019
+15:34
+
+Drawing on Canvas:
+	- DOM was not originally designed for drawings lines.
+	- Awkward to draw lines between arbitrary lines using HTML elements.
+		○ Alternatives:
+			§ DOM utilizing SVG
+			§ Canvas DOM element to encapsulated a picture.
+		○ Canvas vs SVG
+			§ Canvas does not remember what pixels represent.
+			§ SVG preserves original description.
+	- SVG:
+		○ Xmlns attribute changes element to diff XML namespace.
+			§ Identified by URL.
+		○ Tags typically don't exist in HTML but do in SVG.
+		○ Placed in HTML with SVG tag.
+		○ SVG tags are DOM elements, and can be manipulated by JS.
+	- The Canvas Element:
+		○ Placed using <canvas> tag.
+		○ New canvas is empty, and transparent.
+		○ Must use context object to provide methods to draw on Canvas.
+		○ 2d and webgl (3d) are the two widely supported drawing styles.
+			§ WebGL won't be covered in EJS.
+		○ Provide context with canvas' getContext('drawstyle') method.
+	- Lines and Surfaces:
+		○ Note: Methods are all very similar to Canvas and Context objects used in
+    Android development from CS246.
+			§ fillRect fills rectangle.
+			§ strokeRect draws outline
+			§ fillStyle controls color of fill.
+			§ strokeStyle controls color of stroke.
+		○ No width or height attributes have defaults of 300px width, 150px height.
+	- Paths:
+		○ Path is a sequence of lines.
+		○ lineTo starts with path's current position. Position is usually end of
+    last segment unless moveTo is called.
+			§ lineTo draws line from last position.
+			§ moveTo moves last position.
+		○ QuadraticCurveTo draws a curve to a given point.
+		○ bezierCurveTo draws curve using two of line's endpoints.
+		○ Arc method draws line that curves along the edge of a circle
+			§ Given center, radius, start and end angles.
+			§ Angles measured in radians, not degrees.
+	- Text:
+		○ fillText and strokeText
+			§ Typically only need fillText for text.
+			§ Use font property to specify size, style and font.
+			§ Can add italic or bold to the start of string for style selection.
+		○ Last two arguments provide position at which font is drawn.
+	- Images:
+		○ Vector vs bitmap graphics:
+			§ Vectors work with lines and drawing of shapes.
+			§ Bitmaps work with pixel data (colored dots).
+		○ drawImage allows pixelData to be drawn onto graphics.
+		○ Needs load event handler to draw image after it has loaded
+			§ Otherwise image might not be drawn because it's not loaded.
+		○ Note: This could be useful for creating the pokedex…
+		○ Draw image can be used to draw only a fragment of an image.
+			§ Good for cyclical animations.
+	- Transformation:
+		○ Scale can be used to scale image by width or height
+			§ Flip images when passing point (0,0)
+		○ Rotate method rotates drawing.
+		○ Transformations "stack", each happens relative to the previous.
+	- Storing and Clearing Transformations
+		○ It's proper to save current transformation for later use.
+		○ Save and restore methods on 2D canvas context do this.
+		○ resetTransform to fully reset transformation.
+			§ Save saves current state.
+			§ Restores restores to last save.
+	- Choosing a Graphics Interface
+		○ No single best approach to all situations.
+		○ Plain HTML is simple and integrates well with text.
+			§ SVG and canvas won't help position text or wrap it.
+		○ SVG looks good at any zoom level and is designed for drawing.
+			§ HTML can look crisp at any size, but isn't designed for drawing.
+		○ SVG and HTML use the DOM making manipulation more simple.
+		○ Canvas has an advantage when drawing a huge number of tiny elements.
+
+Questions:
+Do saves and restores operate on a stack? In other words, if I call save three
+times and restore twice, will I go back to the first save? The book makes it a
+bit confusing.
