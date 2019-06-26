@@ -1,0 +1,63 @@
+body {
+  font-size: 1em;
+  font-family: impact;
+  background-color: #733380;
+}
+
+p {
+  font-size: 2em;
+}
+
+@media only screen {
+  body {
+    font-size: 1.3em;
+    font-family: impact;
+    background-color: #f22613;
+  }
+  #list {
+    font-weight: bold;
+    font-family: courier new;
+    font-size: 1.5rem;
+    background-color: #d2d7d3;
+    list-style: none;
+    border: 0.9em solid #f7b58c;
+    text-align: left;
+    width: auto;
+    box-shadow: inset 0px 0px 0px 10px #84739c;
+    padding: 2em;
+    margin: 0 3em 0 3em;
+  }
+  #list > li {
+    box-shadow: #f7b58c;
+  }
+  input, button {
+    font-size: 1em;
+  }
+  .flexCenter {
+    font-size: 2.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .flexCenter > button {
+    display: inline;
+    margin: auto;
+  }
+  .circle {
+    height: 5em;
+    width: 5em;
+    margin-left: 1em;
+    margin-top: 1em;
+    border-radius: 50%;
+  }
+  /* Draw with Canvas.... */
+  #outCircle {
+    background-color: white;
+  }
+  #inCircle {
+    height: 4.5em;
+    width: 4.5em;
+    background-color: blue;
+  }
+}
