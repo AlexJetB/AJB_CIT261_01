@@ -22,11 +22,12 @@
     margin: auto;
     height: 70%;
     width: 80%;
+    border: 10px solid black;
     border-radius: 10px;
   }
   #list > li {
     padding: 0.5rem 0 0.5rem 0;
-    font-size: 23px; /*has to be in pixels due to font limitations*/
+    font-size: 30px; /*has to be in pixels due to font limitations*/
     width: 90%;
   }
   #list > li:active {

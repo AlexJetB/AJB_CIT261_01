@@ -135,20 +135,22 @@ function showOnePoke(pokeURL) {
 }
 
 function showType(typeExt) {
-  // "Nuke" buttons
-  let nextButton = document.getElementById('nextButton'),
-      nextClone = nextButton.cloneNode(true);
-  let prevButton = document.getElementById('prevButton'),
-      prevClone = prevButton.cloneNode(true);
-  nextButton.parentNode.replaceChild(nextClone, nextButton);
-  prevButton.parentNode.replaceChild(prevClone, prevButton);
+  if (typeExt !== "") {
+    // "Nuke" buttons
+    let nextButton = document.getElementById('nextButton'),
+        nextClone = nextButton.cloneNode(true);
+    let prevButton = document.getElementById('prevButton'),
+        prevClone = prevButton.cloneNode(true);
+    nextButton.parentNode.replaceChild(nextClone, nextButton);
+    prevButton.parentNode.replaceChild(prevClone, prevButton);
 
-  console.log(typeExt);
-  const newList = getJson(url + 'type/' + typeExt);
-  newList.then(data => {
-    let array = buildTypeList(data);
-    console.log(array);
-    buildList(array, "byType", 0, 10);
-    buildButtons(array, "byType", 0, 10);
-  });
+    console.log(typeExt);
+    const newList = getJson(url + 'type/' + typeExt);
+    newList.then(data => {
+      let array = buildTypeList(data);
+      console.log(array);
+      buildList(array, "byType", 0, 10);
+      buildButtons(array, "byType", 0, 10);
+    });  
+  }
 }
