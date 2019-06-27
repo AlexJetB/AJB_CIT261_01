@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Pokedex</title>
     <link rel="stylesheet" type="text/css" href="css/pokemon-font-1.8.1/css/pokeStyle.css">
+    <script type="module" src="js/pokeApi.js">
+    </script>
   </head>
   <body>
     <div class="flex">
@@ -14,7 +16,7 @@
       <div>
         <form id="searchForm" name="searchForm">
           <span>Search: </span><input type="text" name="pokeName">
-          <select id="typeSelect" onchange="showType(this.value)">
+          <select id="typeSelect" onchange="return showType(this.value)">
             <option value=''>Select Type</option>
           </select>
         </form>
@@ -28,6 +30,4 @@
       <button id="nextButton">Next</button>
     </div>
   </body>
-  <script type="text/javascript" src="js/pokeApi.js">
-  </script>
 </html>
