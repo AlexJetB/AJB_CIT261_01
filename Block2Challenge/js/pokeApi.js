@@ -1,33 +1,23 @@
+import { getJson } from './utilities.js';
+
 // This is the base URL
-const url = 'https://pokeapi.co/api/v2/'
+const url = 'https://pokeapi.co/api/v2/';
 
 // Main code execution on load...
-const myList = getJson(url + 'pokemon?limit=10&offset=0');
-console.log(myList);
+init();
 
-const mySelect = getJson(url + 'type');
-mySelect.then(data => {
-  buildSelect(data);
-});
+function init() {
+  const myList = getJson(url + 'pokemon?limit=10&offset=0');
+  console.log(myList);
 
-myList.then(data => {
-  buildList(data);
-  buildButtons(data);
-});
+  const mySelect = getJson(url + 'type');
+  mySelect.then(data => {
+    buildSelect(data);
+  });
 
-
-function getJson(url) {
-  return fetch(url)
-  .then(response => {
-    if (response.ok) {
-      console.log('in then', response);
-      return response.json();
-    } else {
-      throw new Error('JSON retrieval failed!');
-      console.log('Will not run.');
-    }
-  }).catch(err => {
-    console.log(err);
+  myList.then(data => {
+    buildList(data);
+    buildButtons(data);
   });
 }
 
@@ -151,6 +141,10 @@ function showType(typeExt) {
       console.log(array);
       buildList(array, "byType", 0, 10);
       buildButtons(array, "byType", 0, 10);
-    });  
+    });
+    return true;
+  } else {
+    init();
+    return false;
   }
 }
