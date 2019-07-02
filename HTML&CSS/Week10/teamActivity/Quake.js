@@ -16,10 +16,10 @@ export default class Quake {
   }
   getQuakeById(id) {
     // filter this._quakes for the record identified by id and return it
-    // for(this._quakes as quake) {
-    //   if (quake.eventid === id) {
-    //     return quake;
-    //   }
-    // }
+    for(var quake of this._quakes.features) {
+      if (quake.id === id) {
+        return quake;
+      }
+    }
   }
 }
