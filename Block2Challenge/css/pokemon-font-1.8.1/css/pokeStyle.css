@@ -15,12 +15,23 @@
     font-smooth: never;
     font-size: 10px;
     background-color: #f22613;
+    min-height: 100%;
+    border: 20px solid #a42013;
+  }
+  html {
+    height: 96%;
+  }
+  .searchOptions {
+    width: 70%;
+  }
+  .circContainer {
+    width: 30%;
   }
   #list {
     list-style: none;
     background-color: #d2d7d3;
     margin: auto;
-    height: 70%;
+    height: 58em;
     width: 80%;
     border: 10px solid black;
     border-radius: 10px;
@@ -65,6 +76,7 @@
     margin-top: 2em;
     width: 80%;
   }
+
   .flexCenter > button {
     font-family: 'pokemon-font', monospace;
     padding: 1em;
@@ -81,17 +93,25 @@
   .circle {
     border-radius: 50%;
   }
+  .indBttn {
+    border: none;
+    background-color: #387d32;
+  }
+  .indBttn:active {
+    background-color: #8cd53d;
+  }
   /* Draw with Canvas.... */
   #outCircle {
     left: 2em;
     height: 95px;
-    width: 200px;
-    margin-right: 50px; margin-left: 50px;
+    width: 95px;
+    margin-left: 50px;
+    transform: translate(20%, 20%);
     background-color: white;
   }
   #inCircle {
     position: relative;
-    transform: translate(15%, 20%);
+    transform: translate(20%, 20%);
     height: 70px;
     width: 70px;
     animation: fadeblinking 1s linear infinite;
@@ -114,5 +134,4 @@
       color: white;
     }
   }
-
 }

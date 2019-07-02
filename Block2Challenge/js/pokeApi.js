@@ -4,7 +4,6 @@ import { getJson } from './utilities.js';
 const url = 'https://pokeapi.co/api/v2/';
 
 // Main code execution on load...
-init();
 
 function init() {
   const myList = getJson(url + 'pokemon?limit=10&offset=0');
@@ -24,10 +23,10 @@ function init() {
 function buildList(data, listKind, pagStart, pagEnd) {
   const myListElement = document.getElementById('list');
   if (listKind === undefined) {
-    myListElement.innerHTML = data.results.map(item => `<li onClick="showOnePoke('${item.url}')">${item.name}</li>`)
+    myListElement.innerHTML = data.results.map(item => `<li onTouchEnd="showOnePoke('${item.url}')">${item.name}</li>`)
     .join('');
-  } else if (listKind === "byType") {
-    myListElement.innerHTML = data.slice(pagStart, pagEnd).map(item => `<li onClick="showOnePoke('${item.pokemon.url}')">${item.pokemon.name}</li>`)
+  } else if (listKind === "byType" || listKind === "bySearch") {
+    myListElement.innerHTML = data.slice(pagStart, pagEnd).map(item => `<li onTouchEnd="showOnePoke('${item.pokemon.url}')">${item.pokemon.name}</li>`)
     .join('');
   }
 }
@@ -46,7 +45,7 @@ function buildButtons(data, listKind, pagStart, pagEnd) {
       prevClone = prevButton.cloneNode(true);
 
   if (listKind === undefined) {
-    nextButton.addEventListener("click", function next(){
+    nextButton.addEventListener("touchend", function next(){
       if (data.next !== null) {
         prevButton.parentNode.replaceChild(prevClone, prevButton);
         const myList = getJson(data.next);
@@ -61,7 +60,7 @@ function buildButtons(data, listKind, pagStart, pagEnd) {
       }
     }, {once:true});
 
-    prevButton.addEventListener("click", function prev(){
+    prevButton.addEventListener("touchend", function prev(){
       if (data.previous !== null) {
         nextButton.parentNode.replaceChild(nextClone, nextButton);
         const myList = getJson(data.previous);
@@ -76,7 +75,7 @@ function buildButtons(data, listKind, pagStart, pagEnd) {
       }
     }, {once:true});
   } else if (listKind === "byType") {
-    nextButton.addEventListener("click", function nextOfType(){
+    nextButton.addEventListener("touchend", function nextOfType(){
       if (pagEnd < data.length) {
         prevButton.parentNode.replaceChild(prevClone, prevButton);
 
@@ -89,7 +88,7 @@ function buildButtons(data, listKind, pagStart, pagEnd) {
       }
     }, {once:true});
 
-    prevButton.addEventListener("click", function prevOfType(){
+    prevButton.addEventListener("touchend", function prevOfType(){
       if (pagStart !== 0) {
         nextButton.parentNode.replaceChild(nextClone, nextButton);
 
@@ -111,10 +110,12 @@ function buildSelect(data) {
 }
 
 function showOnePoke(pokeURL) {
-  const sprite = document.getElementById("sprite");
-  const abilities = document.getElementById("abilities");
-  const type = document.getElementById("type");
-  const pokemon = getJson(pokeURL);
+  const resultBox = document.getElementById('');
+  document.getElementById('list').display = "none";
+
+  resultBox.display = "block";
+
+  resultBox.display
 
   pokemon.then(iData => {
     sprite.src = iData.sprites.front_default;
@@ -124,6 +125,8 @@ function showOnePoke(pokeURL) {
   })
 }
 
+
+// Public functions...
 function showType(typeExt) {
   if (typeExt !== "") {
     // "Nuke" buttons
@@ -148,3 +151,19 @@ function showType(typeExt) {
     return false;
   }
 }
+
+function search() {
+  const pokeName = document.getElementById('pokeName').value.toLowerCase();
+  const pokeIndiv = getJson(url + 'pokemon/' + pokeName);
+
+  pokeIndiv.then(result => {
+    console.log(result);
+  });
+}
+
+// Public function... May look to revise using MVC
+window.showType = showType;
+window.showOnePoke = showOnePoke;
+window.search = search;
+
+init();
