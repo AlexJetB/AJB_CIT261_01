@@ -1,0 +1,99 @@
+Week 10 Notes
+
+Friday, June 28, 2019
+11:21
+
+Reading 1: Form Validation:
+	- Helps ensure users filled out forms in correct format.
+	- Common validation types:
+		○ Field is required.
+		○ Correct formatting (Phone #s, physical addresses, emails)
+		○ Correct password requirements.
+	- Reasons:
+		○ Obtain correct data in correct format. (no improper db insertions)
+		○ User account protection. (good passwords, valid emails)
+		○ Protect ourselves from malicious users (code injections)
+	- Types of validation:
+		○ Client-side:
+			§ Occurs in browser before data is submitted
+			§ Very user friendly
+			§ JavaScript
+			§ HTML5 built-in validation with attributes.
+			§ NOTE: Cannot prevent against malicious attacks
+		○ Server-side validation:
+			§ Occurs on server side after form submission.
+			§ Not user friendly due to entire form submission.
+			§ Server-side frameworks provide tools to sanitize and validate data.
+			§ Not visible to user.
+			§ Last line of defense (if client-side is disabled)
+		○ Developers use a combination of both client and server side validation.
+	- Built-in Form Validation:
+		○ Uses attributes in HTML5
+		○ Not reliant on scripts.
+		○ Element matches :valid CSS pseudo-class when valid.
+		○ :Invalid when invalid.
+		○ Regex can be used to as validation (pattern attribute).
+		○ Minlength, maxlength attributes for string length.
+		○ Min and max attributes for number values.
+		○ Step attribute can be used for number increment value.
+		○ Customized error messages:
+			§ Title attribute
+			§ No standard way to change appearance with CSS
+			§ Language dependent on browser locale.
+			§ You must use JavaScript to customize these messages.
+			§ Use JS setCustomValidity() method to customize messages.
+	- JavaScript form validation:
+		○ Used for completely customizable form validation unlike built-in HTML5
+		○ Constraint validation API consists of many built-in methods to validate
+    forms through JS.
+		○ Legacy browsers typically don't support the Constraint Validation API.
+		○ AJAX requests can be used to perform remote validation.
+			§ A server is queried for validation.
+			§ Still considered client side because the validation is sending a request
+      for clarification, and not being performed on the server.
+Questions:
+	1. Should validation be focused on server side validation first and foremost?
+	2. Is it simple/possible for users to disable client-side validation?
+
+Reading 2: Using Fetch:
+	- JavaScript interface for access and manipulation of "HTTP pipeline"
+	- Allows users to "fetch" resources in async manner across network.
+	- Successor of XMLHttpRequest object.
+	- Method returns a promise.
+	- Has second parameter, init
+		○ Object that allows control over different settings.
+			§ Credential inclusion
+			§ Content-type
+			§ Method
+			§ Body
+	- Check if fetch was successful.
+	- Request object uses same parameters as fetch
+	- Headers object allows you to create custom headers.
+		○ Multi-map of name: value pairs.
+		○ Passed to Headers() constructor
+		○ "Contents can be queried and retrieved"
+		○ Methods throw a TypeError if non-valid HTTP name is used.
+	- Response objects
+		○ Returned when fetch is resolved.
+		○ .status an integer between 200-299
+		○ .statusText  OK status code message.
+		○ .ok checks for status in 200-299 range.
+		○ Constructor takes optional arguments for a response, a body and init object..
+	- Body:
+		○ Data within a request or response.
+		○ Instance of:
+			§ ArrayBuffer
+			§ ArrayBufferView
+			§ Blob/file
+			§ String
+			§ URLSearchParams
+			§ FormData
+		○ Methods of instance extraction:
+			§ arrayBuffer()
+			§ Blob()
+			§ Json()
+			§ Text()
+			§ formData()
+Questions:
+Should it be standard practice to await the response from a fetch? Are there any
+scenarios where it wouldn't matter? 
