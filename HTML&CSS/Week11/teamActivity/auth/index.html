@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Auth Example</title>
+  </head>
+  <body>
+    <main>
+      <h1>Auth Example App</h1>
+      <div id='login'>
+        <form name="loginForm">
+          Username(email): <input type="text" name="username" id="username"><br>
+          Password: <input type="text" name="password" id="password"><br>
+          <input type="button" value="submit" id="subBttn">
+        </form>
+      </div>
+    </main>
+  </body>
+  <script type="module">
+    import Auth from './auth.js';
+
+    let auth = new Auth();
+
+    let subBttn = document.getElementById("subBttn");
+    subBttn.addEventListener('click', () => {
+      auth.login();
+    });
+    // makeRequest('login', 'POST', {
+    // password: 'user1',
+    // email: 'user1@email.com'
+    // });
+  </script>
+</html>
