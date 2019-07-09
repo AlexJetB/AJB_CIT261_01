@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="css/pokemon-font-1.8.1/css/pokeStyle.css">
   </head>
   <body>
-    <div id="pokeList">
     <div class="flex">
       <div class="circContainer">
         <div id="outCircle" class="circle">
@@ -15,28 +14,33 @@
         </div>
       </div>
       <div class="searchOptions">
-          <span>Search: </span><input type="text" id="pokeName" placeholder="pokemon name">
-          <button id="searchBtn" class="indBttn" ontouchend="search()">Search</button>
-          <select id="typeSelect" onchange="showType(this.value)">
+          <span>Search by... </span><br>
+          Name:<input type="text" id="pokeName" placeholder="pokemon name">
+
+          Type:<select id="typeSelect">
             <option value=''>Select Type</option>
           </select>
       </div>
     </div>
     <p style="color:white; font-size: 40px">Pokemon:</p>
-    <div>
-      <div id='indiv' display="none">
+    <div id="pokeView">
+      <div id='indiv' style="display:none">
+        <div id='sprite'>
+        </div>
+        <div id='stats'>
+        </div>
       </div>
       <ul id='list'>
       </ul>
     </div>
 
-    <div class="flexCenter">
+    <div class="flexCenter" id="nav1">
       <button id="prevButton">PREV</button>
       <button id="nextButton">NEXT</button>
     </div>
-    <div class="flexCenter">
-      <button id="">BACK</button>
-      <button id="">VIEW</button>
+    <div class="flexCenter" id="nav2" style="display: none">
+      <button id="backButton">BACK</button>
+      <button id="viewButton">VIEW</button>
     </div>
   </body>
   <script type="module" src="js/pokeController.js">

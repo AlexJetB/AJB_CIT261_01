@@ -8,12 +8,33 @@
   /* There is no SVG version of this font due to support being dropped in SVG 2 */
 }
 
-@media only screen {
+/*Desktops...*/
+@media only screen and (min-width : 1224px){
   body {
     font-family: 'pokemon-font', monospace;
+    font-size: 10px;
     -webkit-font-smoothing: none;
     font-smooth: never;
+    background-color: #f22613;
+    height: 40em;
+    width: 20em;
+    margin: auto;
+  }
+
+  .circContainer {
+    width: 10%;
+  }
+}
+
+/*iPads*/
+
+/*Mobile...*/
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  body {
+    font-family: 'pokemon-font', monospace;
     font-size: 10px;
+    -webkit-font-smoothing: none;
+    font-smooth: never;
     background-color: #f22613;
     min-height: 100%;
     border: 20px solid #a42013;
@@ -27,18 +48,26 @@
   .circContainer {
     width: 30%;
   }
-  #list {
-    list-style: none;
+  #pokeView {
     background-color: #d2d7d3;
     margin: auto;
-    height: 58em;
+    height: 62em;
     width: 80%;
     border: 10px solid black;
     border-radius: 10px;
+    font-size: 1em;
   }
-  #list > li {
+  .sprite {
+    width: 30%;
+    vertical-align: middle;
+    padding-left: 40%;
+  }
+  #list {
+    list-style: none;
+  }
+  #list > li, #indiv {
     padding: 0.5rem 0 0.5rem 0;
-    font-size: 30px; /*has to be in pixels due to font limitations*/
+    font-size: 3em; /*has to be in pixels due to font limitations*/
     width: 90%;
   }
   #list > li:active {
@@ -48,14 +77,14 @@
   input, button, select {
     font-family: 'pokemon-font', monospace;
     width:70%;
-    font-size: 30px;
+    font-size: 1em;
   }
   option {
-    font-size: 10px;
+    font-size: 1em;
     height: 10px;
   }
   .flex, p {
-    font-size: 30px;
+    font-size: 3em;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -67,7 +96,7 @@
     margin-left: 2em;
   }
   .flexCenter {
-    font-size: 30px;
+    font-size: 3em;
     display: flex;
     flex-direction: row;
     align-items: center;

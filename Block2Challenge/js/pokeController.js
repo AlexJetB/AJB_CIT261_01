@@ -1,141 +1,107 @@
-import { getJson } from './utilities.js';
-
+import { getJson, nukeButtons } from './utilities.js';
+import PokeModel from './pokeModel.js';
+import PokeView from './pokeView.js';
 // This is the base URL
 const url = 'https://pokeapi.co/api/v2/';
 
 export default class PokeController {
   constructor () {
-    this.searchArray = [];
-    this.resultArray = [];
+    this.baseURL = 'https://pokeapi.co/api/v2/';
+    this.pokeModel = new PokeModel();
+    this.pokeView = new PokeView();
   }
-}
 
-var myPokeController = new PokeController();
-
-// Main code execution on load...
-
-function init() {
-
-  const myList = getJson(url + 'pokemon?limit=965&offset=0');
-  console.log(myList);
-
-  myList.then(data => {
-    let array = buildPokeArray(data, true);
-    myPokeController.searchArray = array;
-    //console.log(myPokeController.searchArray);
-    //console.log(array);
-    buildList(array, true, 0, 10);
-    buildButtons(array, true, 0, 10);
-  });
-
-  const mySelect = getJson(url + 'type');
-  mySelect.then(data => {
-    buildSelect(data);
-  });
-}
-
-function buildList(data, whole, pagStart, pagEnd) {
-  const myListElement = document.getElementById('list');
-  if (whole === true) {
-    myListElement.innerHTML = data.slice(pagStart, pagEnd).map(item => `<li onTouchEnd="showOnePoke('${item.url}')">${item.name}</li>`)
-    .join('');
-  } else if (whole === false) {
-    myListElement.innerHTML = data.slice(pagStart, pagEnd).map(item => `<li onTouchEnd="showOnePoke('${item.pokemon.url}')">${item.pokemon.name}</li>`)
-    .join('');
-  }
-}
-
-function buildPokeArray(data, whole) {
-  if (whole === true) {
-    return data.results.map(function (item) {
-      item[String(item.name)];
-      return item;
-    });
-  } else if (whole === false) {
-    return data.pokemon.map(function (item) {
-      item[String(item.pokemon.name)];
-      return item;
-    });
-  }
-}
-
-function buildButtons(data, listKind, pagStart, pagEnd) {
-  let nextButton = document.getElementById('nextButton'),
-      nextClone = nextButton.cloneNode(true);
-  let prevButton = document.getElementById('prevButton'),
-      prevClone = prevButton.cloneNode(true);
-
-  nextButton.addEventListener("touchend", function nextOfType(){
-    if (pagEnd < data.length) {
+  nextOfType(data, listKind) {
+    if (pokeController.pokeModel.pagEnd < data.length) {
+      let prevButton = document.getElementById('prevButton'),
+          prevClone = prevButton.cloneNode(true);
       prevButton.parentNode.replaceChild(prevClone, prevButton);
 
-      pagStart += 10;
-      pagEnd += 10;
-      buildList(data, listKind, pagStart, pagEnd);
-      buildButtons(data, listKind, pagStart, pagEnd);
-      } else {
-        console.log("Cannot proceed to empty next!")
-      }
-    }, {once:true});
-
-  prevButton.addEventListener("touchend", function prevOfType(){
-    if (pagStart !== 0) {
-      nextButton.parentNode.replaceChild(nextClone, nextButton);
-
-      pagStart -= 10;
-      pagEnd -= 10;
-      buildList(data, listKind, pagStart, pagEnd);
-      buildButtons(data, listKind, pagStart, pagEnd);
+      const pagStart = pokeController.pokeModel.pagStart += 10;
+      const pagEnd = pokeController.pokeModel.pagEnd += 10;
+      this.pokeView.buildList(data, listKind, pagStart, pagEnd);
+      this.buildButtons(data, listKind, pagStart, pagEnd);
     } else {
       console.log("Cannot proceed to empty next!")
     }
-  }, {once:true});
-}
+  }
 
-function buildSelect(data) {
-  let select = document.getElementById("typeSelect");
-  select.innerHTML += data.results.map(item => `<option value="${item.name}">${item.name}</option>`)
-  .join('');
-}
+  prevOfType(data, listKind){
+    if (pokeController.pokeModel.pagStart !== 0) {
+      let nextButton = document.getElementById('nextButton'),
+          nextClone = nextButton.cloneNode(true);
+      nextButton.parentNode.replaceChild(nextClone, nextButton);
 
-function showOnePoke(pokeURL) {
-  const resultBox = document.getElementById('');
-  document.getElementById('list').display = "none";
+      const pagStart = this.pokeModel.pagStart -= 10;
+      const pagEnd = this.pokeModel.pagEnd -= 10;
+      this.pokeView.buildList(data, listKind, pagStart, pagEnd);
+      this.buildButtons(data, listKind, pagStart, pagEnd);
+    } else {
+      console.log("Cannot proceed to empty next!")
+    }
+  }
 
-  resultBox.display = "block";
+  buildButtons(data, listKind, pagStart, pagEnd) {
+    nextButton.addEventListener("touchend", function () {
+      pokeController.nextOfType(data, listKind)
+    }, {once:true});
 
-  resultBox.display
+    prevButton.addEventListener("touchend", function () {
+      pokeController.prevOfType(data, listKind)
+    }, {once:true});
+  }
 
-  pokemon.then(iData => {
-    sprite.src = iData.sprites.front_default;
-    abilities.innerHTML = iData.abilities.map(item => `${item.ability.name} | `)
+  buildSelect(data) {
+    let select = document.getElementById("typeSelect");
+    select.addEventListener('change', function() {
+      showType(this.value)});
+    select.innerHTML += data.results.map(item => `<option value="${item.name}">${item.name}</option>`)
     .join('');
-    type.innerHTML = iData.types.map(item => `${item.type.name} | `).join('');
-  })
+  }
+
+  init() {
+    const myList = getJson(url + 'pokemon?limit=965&offset=0');
+    console.log(myList);
+
+    myList.then(data => {
+      let array = this.pokeModel.buildPokeArray(data, true);
+      this.pokeModel.searchArray = array;
+      this.pokeModel.pagStart = 0;
+      this.pokeModel.pagEnd = 10;
+      //console.log(myPokeModel.searchArray);
+      //console.log(array);
+      this.pokeView.buildList(this.pokeModel.searchArray, true, 0, 10);
+      this.buildButtons(this.pokeModel.searchArray, true, 0, 10);
+    });
+
+    const mySelect = getJson(url + 'type');
+    mySelect.then(data => {
+      this.buildSelect(data);
+    });
+
+    document.getElementById('pokeName').addEventListener('keyup', function() {
+      search();
+    });
+  }
 }
 
-function nukeButtons() {
-  let nextButton = document.getElementById('nextButton'),
-      nextClone = nextButton.cloneNode(true);
-  let prevButton = document.getElementById('prevButton'),
-      prevClone = prevButton.cloneNode(true);
-  nextButton.parentNode.replaceChild(nextClone, nextButton);
-  prevButton.parentNode.replaceChild(prevClone, prevButton);
-}
 
-// Public functions...
+var pokeController = new PokeController();
+pokeController.init();
+
+// 'Public' functions...
 function showType(typeExt) {
   if (typeExt !== "") {
     // "Nuke" buttons
     nukeButtons();
 
     console.log(typeExt);
-    const newList = getJson(url + 'type/' + typeExt);
+    const newList = getJson('https://pokeapi.co/api/v2/' + 'type/' + typeExt);
     newList.then(data => {
-      let array = buildPokeArray(data, false);
-      console.log(array);
-      buildList(array, false, 0, 10);
-      buildButtons(array, false, 0, 10);
+      let array = pokeController.pokeModel.buildPokeArray(data, false);
+      //console.log(array);
+      pokeController.pokeView.buildList(array, false, 0, 10);
+      pokeController.buildButtons(array, false, 0, 10);
     });
     return true;
   } else {
@@ -144,11 +110,13 @@ function showType(typeExt) {
   }
 }
 
+// MODEL
 function search() {
   nukeButtons();
-  
+
   const pokeName = document.getElementById('pokeName').value.toLowerCase();
-  myPokeController.resultArray = myPokeController.searchArray.filter(function(item) {
+  pokeController.pokeModel.resultArray = pokeController.pokeModel.searchArray
+  .filter(function(item) {
     const pokeName = document.getElementById('pokeName').value.toLowerCase();
     const regex = new RegExp(pokeName, "g");
 
@@ -157,18 +125,7 @@ function search() {
     }
   });
 
-  console.log(myPokeController.resultArray);
-
-  buildList(myPokeController.resultArray, true, 0, 10);
-  buildButtons(myPokeController.resultArray, true, 0, 10);
-  // pokeIndiv.then(result => {
-  //   console.log(result);
-  // });
+  //console.log(myPokeModel.resultArray);
+  pokeController.pokeView.buildList(pokeController.pokeModel.resultArray, true, 0, 10);
+  pokeController.buildButtons(pokeController.pokeModel.resultArray, true, 0, 10);
 }
-
-// Public function... May look to revise using MVC
-window.showType = showType;
-window.showOnePoke = showOnePoke;
-window.search = search;
-
-init();
