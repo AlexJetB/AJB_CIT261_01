@@ -53,10 +53,6 @@ export default class sudoPuzzleController {
   update() {
 
   }
-
-  ping() {
-    console.log("Ping!");
-  }
 }
 
 var controller = new sudoPuzzleController();
@@ -68,6 +64,7 @@ function ping() {
   console.log("ping!");
 }
 
+window.ping = ping;
 // var inputs = document.getElementsByClassName('square');
 // var i;
 //

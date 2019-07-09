@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const server = jsonServer.create();
 const router = jsonServer.router('./database.json');
-const userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'));
+// const userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'));
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
@@ -78,6 +78,6 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
 
 server.use(router);
 
-server.listen(3000, () => {
+server.listen(5000, () => {
   console.log('Run Auth API Server');
 });
