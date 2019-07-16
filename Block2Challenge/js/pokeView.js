@@ -81,7 +81,7 @@ async function showOnePoke(pokeURL) {
           p.innerHTML = desc.effect_entries[0].effect;
           this.parentNode.appendChild(p);
         });
-      })
+      }, { once: true});
     });
     const spriteArray = objToArray(data.sprites);
     spriteNum.num = 0;
