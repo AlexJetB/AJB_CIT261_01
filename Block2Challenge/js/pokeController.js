@@ -7,6 +7,7 @@ const url = 'https://pokeapi.co/api/v2/';
 export default class PokeController {
   constructor () {
     this.baseURL = 'https://pokeapi.co/api/v2/';
+    this.indivURL = '';
     this.pokeModel = new PokeModel();
     this.pokeView = new PokeView();
   }
@@ -17,8 +18,8 @@ export default class PokeController {
           prevClone = prevButton.cloneNode(true);
       prevButton.parentNode.replaceChild(prevClone, prevButton);
 
-      const pagStart = pokeController.pokeModel.pagStart += 10;
-      const pagEnd = pokeController.pokeModel.pagEnd += 10;
+      const pagStart = pokeController.pokeModel.pagStart += 15;
+      const pagEnd = pokeController.pokeModel.pagEnd += 15;
       this.pokeView.buildList(data, listKind, pagStart, pagEnd);
       this.buildButtons(data, listKind, pagStart, pagEnd);
     } else {
@@ -32,8 +33,8 @@ export default class PokeController {
           nextClone = nextButton.cloneNode(true);
       nextButton.parentNode.replaceChild(nextClone, nextButton);
 
-      const pagStart = this.pokeModel.pagStart -= 10;
-      const pagEnd = this.pokeModel.pagEnd -= 10;
+      const pagStart = this.pokeModel.pagStart -= 15;
+      const pagEnd = this.pokeModel.pagEnd -= 15;
       this.pokeView.buildList(data, listKind, pagStart, pagEnd);
       this.buildButtons(data, listKind, pagStart, pagEnd);
     } else {
@@ -67,11 +68,11 @@ export default class PokeController {
       let array = this.pokeModel.buildPokeArray(data, true);
       this.pokeModel.searchArray = array;
       this.pokeModel.pagStart = 0;
-      this.pokeModel.pagEnd = 10;
+      this.pokeModel.pagEnd = 15;
       //console.log(myPokeModel.searchArray);
       //console.log(array);
-      this.pokeView.buildList(this.pokeModel.searchArray, true, 0, 10);
-      this.buildButtons(this.pokeModel.searchArray, true, 0, 10);
+      this.pokeView.buildList(this.pokeModel.searchArray, true, 0, 15);
+      this.buildButtons(this.pokeModel.searchArray, true, 0, 15);
     });
 
     const mySelect = getJson(url + 'type');
@@ -100,12 +101,12 @@ function showType(typeExt) {
     newList.then(data => {
       let array = pokeController.pokeModel.buildPokeArray(data, false);
       //console.log(array);
-      pokeController.pokeView.buildList(array, false, 0, 10);
-      pokeController.buildButtons(array, false, 0, 10);
+      pokeController.pokeView.buildList(array, false, 0, 15);
+      pokeController.buildButtons(array, false, 0, 15);
     });
     return true;
   } else {
-    init();
+    pokeController.init();
     return false;
   }
 }
@@ -126,6 +127,6 @@ function search() {
   });
 
   //console.log(myPokeModel.resultArray);
-  pokeController.pokeView.buildList(pokeController.pokeModel.resultArray, true, 0, 10);
-  pokeController.buildButtons(pokeController.pokeModel.resultArray, true, 0, 10);
+  pokeController.pokeView.buildList(pokeController.pokeModel.resultArray, true, 0, 15);
+  pokeController.buildButtons(pokeController.pokeModel.resultArray, true, 0, 15);
 }
